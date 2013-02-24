@@ -50,6 +50,23 @@ describe User do
     end
   end
 
+  describe "email address" do
+    it "should  be invalid" do
+      addresses = %w[usr@foo,com user@foo example.user@foo.]
+      addresses.each do |invalid_address|
+        @user.email = invalid_address
+        @user.should_not be_valid
+      end
+    end
+
+    it "should be valid" do
+      addresses = %w[ser@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses.each do |valid_address|
+        @user.email = valid_address
+        @user.should be_valid
+      end
+    end
+  end
   #first_name: min 2 chars, max: 50 - letters
   #last_name: min 2 chars, max:50 - letters
   #username: min 3 chars, max:20 - letters, numbers, unique
