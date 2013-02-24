@@ -20,15 +20,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do
-  gem "rspec", "~> 2.13.0"
+group :development, :test do
+  gem "rspec-rails", "~> 2.13.0"
 end
 
-gem 'jquery-rails'
+gem "jquery-rails"
 #gem "twitter-bootstrap-rails", "~> 2.2.4"
 gem "paperclip", "~> 3.4.1"
 gem "rails-backbone", "~> 0.9.10"
-
+gem "devise", "~> 2.2.3"
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
