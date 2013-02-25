@@ -11,6 +11,7 @@ describe User do
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
   it { should respond_to(:username) }
+  it { should respond_to(:avatar_file_name) }
 
   describe "when first name is too short" do
     before { @user.first_name = "a" }
@@ -89,6 +90,33 @@ describe User do
     before { @user.username = "a" * 2 }
 
     it { should_not be_valid }
+  end
+
+  describe "Avatars" do
+    describe "uploading and retrieving pictures" do
+      it "should be able to upload to the cloud" do
+        pending
+      end
+
+      it "should be retrievable from the cloud" do
+        pending
+      end
+
+      it "should be able to get back the regular image" do
+        pending
+      end
+
+      it "should be able to get a thumbnail image back" do
+        pending
+      end
+    end 
+
+    describe "Invalid pictures" do
+      it "should return an error message if the file is not a picture" do
+        pending
+      end
+    end
+
   end
 
 end

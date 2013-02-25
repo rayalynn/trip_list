@@ -24,11 +24,17 @@ group :development, :test do
   gem "rspec-rails", "~> 2.13.0"
 end
 
+group :test do
+  gem "vcr", "~> 2.2.4"
+  gem "webmock", "~> 1.9.3"
+end
+
 gem "jquery-rails"
 #gem "twitter-bootstrap-rails", "~> 2.2.4"
 gem "paperclip", "~> 3.4.1"
 gem "rails-backbone", "~> 0.9.10"
 gem "devise", "~> 2.2.3"
+gem "aws-sdk", "~> 1.8.3.1"
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
