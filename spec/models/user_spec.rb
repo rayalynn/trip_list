@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(first_name: "Bob", last_name: "Smith", email: "bobsmith@testmail.com") };
+  before { @user = User.new(first_name: "Bob", last_name: "Smith",
+                     email: "bobsmith@testmail.com",
+                     username: "myusername") };
   subject { @user }
 
   it { should respond_to(:first_name) }
@@ -50,15 +52,15 @@ describe User do
     end
   end
 
-  describe "email address" do
-    it "should  be invalid" do
+  describe "email address format" do
+    it "should be invalid" do
       addresses = %w[usr@foo,com user@foo example.user@foo.]
       addresses.each do |invalid_address|
         @user.email = invalid_address
         @user.should_not be_valid
       end
     end
-
+ 
     it "should be valid" do
       addresses = %w[ser@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
@@ -67,12 +69,26 @@ describe User do
       end
     end
   end
-  #first_name: min 2 chars, max: 50 - letters
-  #last_name: min 2 chars, max:50 - letters
-  #username: min 3 chars, max:20 - letters, numbers, unique
-  #email: use regex, unique
-  #
-  #presence?
-  #Error messages return JSON data?
+
+  describe "when email address is already taken" do
+    before do
+      same_email_user = @user.dup
+      same_email_user.save
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe "when username is too long" do
+    before { @user.username = "a" * 21 }
+
+    it { should_not be_valid }
+  end
+
+  describe "when username is too short" do
+    before { @user.username = "a" * 2 }
+
+    it { should_not be_valid }
+  end
 
 end
