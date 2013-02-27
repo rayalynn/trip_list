@@ -15,5 +15,5 @@
 /tmp
 *.swp
 /config/aws.yml
-/config/environments/*.rb
+/config/environments/development.rb
 
