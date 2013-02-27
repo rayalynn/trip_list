@@ -94,6 +94,9 @@ describe User do
 
   describe "Avatars" do
     describe "uploading and retrieving pictures" do
+      it "should save to the model" do
+        pending
+      end
       it "should be able to upload to the cloud" do
         pending
       end
@@ -116,7 +119,6 @@ describe User do
         pending
       end
     end
-
   end
 
 end
