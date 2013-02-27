@@ -14,7 +14,7 @@
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
 #
-
+include ActionDispatch::TestProcess
 require 'spec_helper'
 
 describe User do
@@ -110,10 +110,21 @@ describe User do
   end
 
   describe "Avatars" do
-    describe "uploading and retrieving pictures" do
+    describe "uploading and retrieving valid pictures" do
+      before { @user.avatar = fixture_file_upload '/images/flowers.jpg' }
+
       it "should save to the model" do
-        pending
+        @user.should have_attached_file(:avatar)
       end
+
+      it "should have a URL with the original image" do
+        @user.avatar.url.should match(/s3.amazonaws.com/)
+      end
+
+      it "should have a thumbnail URL" do
+        @user.avatar.url(:thumb).should match(/thumb/)
+      end
+
       it "should be able to upload to the cloud" do
         pending
       end
@@ -121,21 +132,6 @@ describe User do
       it "should be retrievable from the cloud" do
         pending
       end
-
-      it "should be able to get back the regular image" do
-        pending
-      end
-
-      it "should be able to get a thumbnail image back" do
-        pending
-      end
     end 
-
-    describe "Invalid pictures" do
-      it "should return an error message if the file is not a picture" do
-        pending
-      end
-    end
   end
-
 end
