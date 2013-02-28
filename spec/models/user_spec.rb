@@ -152,4 +152,22 @@ describe User do
       end
     end 
   end
+
+  describe "Place associations" do
+    before { @user.save }
+    let(:place) { FactoryGirl.create(:place, user: @user) }
+
+   it "should have the right post" do
+     @user.places.should == [place]
+   end
+
+   it "should destroy associated places when destroyed" do
+     @places = @user.places.dup
+     @user.destroy
+     @places.each do |place|
+       Place.find_by_id(place.id).should be_nil
+     end
+   end
+
+  end
 end
