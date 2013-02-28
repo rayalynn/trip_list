@@ -29,6 +29,7 @@ describe Place do
   it { should respond_to(:title) }
   it { should respond_to(:notes) }
   it { should belong_to(:user) }
+  it { should have_many(:photos) }
 
   describe "when title is blank" do
     before { @place.title = "" }
