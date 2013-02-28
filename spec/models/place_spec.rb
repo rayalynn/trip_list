@@ -27,4 +27,36 @@ describe Place do
   it { should respond_to(:title) }
   it { should respond_to(:notes) }
 
+  describe "when title is blank" do
+    before { @place.title = "" }
+    it { should_not be_valid }
+  end
+
+  describe "when title is too short" do
+    before { @place.title = "BA" }
+    it { should_not be_valid }
+  end
+
+  describe "when title is too long" do
+    before { @place.title = "a" * 51 }
+    it { should_not be_valid }
+  end
+
+  describe "when headline is too long" do
+    before { @place.headline = "a" * 75 }
+    it { should_not be_valid }
+  end
+
+  describe "when headline is empty" do
+    before { @place.headline = "" }
+    it { should be_valid }
+  end
+
+  describe "when notes field is empty" do
+    before { @place.notes = "" }
+    it { should be_valid }
+  end
+
+  describe "user ID association" do
+  end
 end
