@@ -18,5 +18,5 @@ class Place < ActiveRecord::Base
 
   validates :title,    :length => { :in => 3..40 }
   validates :headline, :length => { :maximum => 70 }
-  validates :user,     :numericality => { :only_integer => true }
+  validates :user,     :presence => true
 end

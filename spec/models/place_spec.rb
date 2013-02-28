@@ -15,7 +15,8 @@
 require 'spec_helper'
 
 describe Place do
-  before { @place = Place.new(title: "Barcelona", headline: "Awesome City",
+  let(:user) { FactoryGirl.create(:user) }
+  before { @place = user.places.build(title: "Barcelona", headline: "Awesome City",
             notes: "Wikipedia says Barcelona is the capital of Catalonia
               and the second largest city in Spain, after Madrid, with a
               population of 1,621,537 within its administrative limits on
@@ -60,13 +61,8 @@ describe Place do
   end
 
   describe "user ID can't be empty" do
-    before { @place.user = "" }
+    before { @place.user_id = nil }
     it { should_not be_valid }
-  end
-
-  describe "user ID must be an integer" do
-    before { @place.user = 125 }
-    it { should be_valid }
   end
 
 end
