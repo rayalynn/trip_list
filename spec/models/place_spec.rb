@@ -19,13 +19,15 @@ describe Place do
             notes: "Wikipedia says Barcelona is the capital of Catalonia
               and the second largest city in Spain, after Madrid, with a
               population of 1,621,537 within its administrative limits on
-              a land area of 101.4 km") }
+              a land area of 101.4 km",
+           )}
 
   subject { @place }
 
   it { should respond_to(:headline) }
   it { should respond_to(:title) }
   it { should respond_to(:notes) }
+  it { should belong_to(:user) }
 
   describe "when title is blank" do
     before { @place.title = "" }
@@ -57,6 +59,14 @@ describe Place do
     it { should be_valid }
   end
 
-  describe "user ID association" do
+  describe "user ID can't be empty" do
+    before { @place.user = "" }
+    it { should_not be_valid }
   end
+
+  describe "user ID must be an integer" do
+    before { @place.user = 125 }
+    it { should be_valid }
+  end
+
 end

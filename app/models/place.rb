@@ -14,6 +14,9 @@
 
 class Place < ActiveRecord::Base
   attr_accessible :headline, :notes, :photo_id, :title
+  belongs_to :user
+
   validates :title,    :length => { :in => 3..40 }
   validates :headline, :length => { :maximum => 70 }
+  validates :user,     :numericality => { :only_integer => true }
 end

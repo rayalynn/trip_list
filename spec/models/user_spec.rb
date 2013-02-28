@@ -46,6 +46,7 @@ describe User do
   it { should respond_to(:email) }
   it { should respond_to(:username) }
   it { should respond_to(:avatar_file_name) }
+  it { should have_many(:places) }
 
   describe "when first name is too short" do
     before { @user.first_name = "a" }

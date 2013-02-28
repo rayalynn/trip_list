@@ -18,6 +18,8 @@
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessible :email,  :first_name, :last_name, :username, :avatar
+  has_many :places
+
   has_attached_file :avatar, :styles => { :thumb => "100x100>" },
                              :path => 'photos/:class/:style.:extension',
                              :hash_secret => SecureRandom.base64(128) 

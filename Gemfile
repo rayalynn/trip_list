@@ -31,6 +31,7 @@ end
 group :test do
   gem "vcr", "~> 2.2.4"
   gem "webmock", "~> 1.9.3"
+  gem "shoulda-matchers", "~> 1.4.2"
 end
 
 gem "jquery-rails"
