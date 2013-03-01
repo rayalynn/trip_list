@@ -34,6 +34,7 @@ group :test do
   gem "shoulda-matchers", "~> 1.4.2"
   gem "factory_girl_rails", "~> 4.2.1"
   gem "capybara", "~> 2.0.2"
+  gem "database_cleaner", "~> 0.9.1"
 end
 
 gem "jquery-rails"
@@ -42,6 +43,7 @@ gem "paperclip", "~> 3.4.1"
 gem "rails-backbone", "~> 0.9.10"
 gem "devise", "~> 2.2.3"
 gem "aws-sdk", "~> 1.8.3.1"
+gem "high_voltage", "~> 1.2.2"
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
