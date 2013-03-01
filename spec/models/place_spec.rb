@@ -13,6 +13,7 @@
 #
 
 require 'spec_helper'
+require 'pp'
 
 describe Place do
   let(:user) { FactoryGirl.create(:user) }
@@ -65,5 +66,19 @@ describe Place do
     before { @place.user_id = nil }
     it { should_not be_valid }
   end
+ 
+  describe "photos association" do
+    before do
+      @place.save
+      @photo = @place.photos.create(isMainPhoto: false)
+    end
 
+    it "should destroy associated photos when destroyed" do
+      @photos = @place.photos.dup
+      @place.destroy
+      @photos.each do |photo|
+        Photo.find_by_id(photo.id).should be_nil
+      end
+    end
+  end
 end

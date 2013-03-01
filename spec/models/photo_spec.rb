@@ -28,6 +28,8 @@ describe Photo do
   end
 
   it { should belong_to(:place) }
+  it { should respond_to(:isMainPhoto) }
+
   it "should save to the model" do
     @photo.should have_attached_file(:image)
   end

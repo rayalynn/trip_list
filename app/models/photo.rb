@@ -20,4 +20,6 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, :styles => { :thumb => "300x300>" },
                              :path => 'photos/:class/:style.:extension',
                              :hash_secret => SecureRandom.base64(128) 
+  validates :isMainPhoto, :inclusion => { :in => [true, false] }
+
 end
