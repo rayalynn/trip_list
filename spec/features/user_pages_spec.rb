@@ -7,8 +7,7 @@ describe "User Pages" do
     let(:user) { FactoryGirl.build(:user) }
     before { sign_up(user) }
 
-    #Redirect to main page for now
-    it { should have_selector('h3', :text => 'Tour') }
+    it { should have_selector('h3', :text => 'Hi ' + user.first_name) }
   end
 
   describe "the signup process with invalid user", :type => "feature" do
