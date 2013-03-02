@@ -8,7 +8,7 @@ FactoryGirl.define do
     password_confirmation "somepass"
   end
 
-  factory :invalid_user do
+  factory :invalid_user, :class => 'User' do
     first_name "J"
     last_name "S"
     email      "johnsmith!wondertest.com"

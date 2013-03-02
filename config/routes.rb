@@ -7,12 +7,6 @@ TripList::Application.routes.draw do
     post "/signup" => "devise/registrations#create"
   end
 
-  #devise_scope :user do
-    #get "signup", :to => "devise/registrations#new"
-  #end
-  #devise_for :users, :as => "", :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
-
-  #match '/signup' => "devise/registrations#new", :as => :new_user_registration
   
   #resources :users
   # The priority is based upon order of creation:

@@ -1,7 +1,7 @@
 include ApplicationHelper
 
 def sign_up(user)
-  visit new__user_registration_path
+  visit signup_path
   fill_in "First name", with: user.first_name
   fill_in "Last name",  with: user.last_name
   fill_in "Email",      with: user.email
