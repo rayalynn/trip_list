@@ -43,4 +43,6 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
 
   config.extend VCR::RSpec::Macros
+
+  config.include Devise::TestHelpers, :type => :controller
 end

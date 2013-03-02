@@ -4,6 +4,8 @@ FactoryGirl.define do
     last_name "Smith"
     email      "johnsmith@wondertest.com"
     username  "johnsmith" 
+    password "somepass"
+    password_confirmation "somepass"
   end
 
   factory :place do

@@ -5,13 +5,17 @@ describe User do
 
   before { @user = User.new(first_name: "Bob", last_name: "Smith",
                      email: "bobsmith@testmail.com",
-                     username: "myusername") };
+                     username: "myusername",
+                     password: "somepass",
+                     password_confirmation: "somepass") };
   subject { @user }
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
   it { should respond_to(:username) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
   it { should respond_to(:avatar_file_name) }
   it { should have_many(:places) }
 
@@ -92,6 +96,28 @@ describe User do
     before { @user.username = "a" * 2 }
 
     it { should_not be_valid }
+  end
+
+  describe "Passwords" do
+    describe "valid passwords" do
+      before { @user.password = @user.password_confirmation = "token11111" }
+      it { should be_valid }
+    end
+
+    describe "when password is not present" do
+      before { @user.password = @user.password_confirmation = "" }
+      it { should_not be_valid }
+    end
+
+    describe "when password is too short" do
+      before { @user.password = @user.password_confirmation = "cat" }
+      it { should_not be_valid }
+    end
+
+    describe "when password and password confirmation don't match" do
+      before { @user.password_confirmation = "something" }
+      it { should_not be_valid }
+    end
   end
 
   describe "Avatars" do
