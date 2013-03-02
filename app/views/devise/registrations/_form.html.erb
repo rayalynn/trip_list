@@ -1,0 +1,47 @@
+<div class="control-group">
+  <%= f.label :first_name, :class => "control-label" %>
+  <div class="controls">
+    <%= f.text_field :first_name %>
+  </div>
+</div>
+<div class="control-group">
+    <%= f.label :last_name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :last_name %>
+    </div>
+</div>
+<div class="control-group">
+    <%= f.label :username, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :username %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :email, :class => "control-label" %>
+  <div class="controls">
+    <%= f.text_field :email %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :password, :class => "control-label" %>
+  <div class="controls">
+    <%= f.password_field :password %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :password_confirmation, "Confirm Password",
+    :class => "control-label" %>
+  <div class="controls">
+    <%= f.password_field :password_confirmation %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :select_a_profile_pic, :class => "control-label" %>
+  <div class="controls">
+    <%= f.file_field :avatar %>
+  </div>
+</div>
+<div class="control-group controls">
+  <%= f.submit "Submit", :class => "btn btn-primary" %>
+</div>
+

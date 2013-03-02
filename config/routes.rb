@@ -1,10 +1,20 @@
 TripList::Application.routes.draw do
-  devise_for :users
-
   root :to => 'high_voltage/pages#show', :id => 'home'
-  match '/signup' => 'users#new'
+
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_scope :user do
+    get "/signup" => "devise/registrations#new"
+    post "/signup" => "devise/registrations#create"
+  end
+
+  #devise_scope :user do
+    #get "signup", :to => "devise/registrations#new"
+  #end
+  #devise_for :users, :as => "", :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+
+  #match '/signup' => "devise/registrations#new", :as => :new_user_registration
   
-  resources :users
+  #resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

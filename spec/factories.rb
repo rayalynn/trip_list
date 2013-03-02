@@ -8,6 +8,16 @@ FactoryGirl.define do
     password_confirmation "somepass"
   end
 
+  factory :invalid_user do
+    first_name "J"
+    last_name "S"
+    email      "johnsmith!wondertest.com"
+    username  "john" 
+    password "somepass"
+    password_confirmation "pass"
+  end
+
+
   factory :place do
     title "Visit the Statue in Italy"
     headline "Try and climb to the top"
