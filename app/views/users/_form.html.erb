@@ -23,6 +23,19 @@
   </div>
 </div>
 <div class="control-group">
+  <%= f.label :password, :class => "control-label" %>
+  <div class="controls">
+    <%= f.password_field :password %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :password_confirmation, "Confirm Password",
+    :class => "control-label" %>
+  <div class="controls">
+    <%= f.password_field :password_confirmation %>
+  </div>
+</div>
+<div class="control-group">
   <%= f.label :select_a_profile_pic, :class => "control-label" %>
   <div class="controls">
     <%= f.file_field :avatar %>
