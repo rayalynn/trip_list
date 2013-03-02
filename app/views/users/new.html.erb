@@ -1,34 +1,5 @@
-<%= form_for @user do |user| %>
-  <% if @user.errors.any? %>
-    <%= @user.errors.count %> errors
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-  <% end %>
-<div class="field">
-    <%= user.label :avatar %>
-    <%= user.file_field :avatar %>
-  </div>
-<div class="field">
-    <%= user.label :first_name %>
-    <%= user.text_field :first_name %>
-  </div>
-<div class="field">
-    <%= user.label :last_name %>
-    <%= user.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= user.label :username %>
-    <%= user.text_field :username %>
-  </div>
-  <div class="field">
-    <%= user.label :email %>
-    <%= user.text_field :email %>
-  </div>
-  <div class="action">
-    <%= user.submit "Submit" %>
-  </div>
+<h3>Create your account</h3>
+<%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
+  <%= render "shared/error_messages", :object => f.object %>
+  <%= render "form", :f => f %>
 <% end %>
