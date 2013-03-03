@@ -28,6 +28,7 @@ end
 group :development, :test do
   gem "rspec-rails", "~> 2.13.0"
   gem "better_errors", "~> 0.7.0"
+  gem "launchy", "~> 2.2.0"
 end
 
 group :test do
