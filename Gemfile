@@ -44,7 +44,7 @@ end
 
 gem "jquery-rails"
 gem "paperclip", "~> 3.4.1"
-gem "rails-backbone", "~> 0.9.10"
+gem "backbone-on-rails", "~> 0.9.10.0"
 gem "devise", "~> 2.2.3"
 gem "aws-sdk", "~> 1.8.3.1"
 gem "high_voltage", "~> 1.2.2"

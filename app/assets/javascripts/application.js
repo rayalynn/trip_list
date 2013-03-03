@@ -25,4 +25,12 @@
 //= require bootstrap-scrollspy
 //= require bootstrap-tab
 //= require bootstrap-typeahead
+//= require underscore
+//= require backbone
+//= require trip_list
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
 //= require_tree .
