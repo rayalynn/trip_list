@@ -23,6 +23,8 @@ end
 
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem "guard-rspec", "~> 2.4.1"
+  gem 'rb-fsevent', '~> 0.9'
 end
 
 group :development, :test do
