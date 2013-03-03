@@ -25,13 +25,7 @@ describe "User Pages" do
 
   describe "logging in" do
     let(:user) { FactoryGirl.create(:user) }
-    before do
-      visit login_path
-      fill_in "Email",    :with => user.email
-      fill_in "Password", :with => user.password
-      click_button "Sign in"
-      save_and_open_page
-    end
+    before { login(user) }
 
     it { should have_selector('h3', 'Hi Barney') }
 
