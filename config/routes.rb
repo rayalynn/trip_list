@@ -3,8 +3,10 @@ TripList::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   devise_scope :user do
-    get "/signup" => "devise/registrations#new"
+    get "/signup"  => "devise/registrations#new"
     post "/signup" => "devise/registrations#create"
+    post "/users/sign_up" => "devise/registrations#create"
+    get "/login"   => "devise/sessions#new"
   end
 
   resources :users, :except => [:new, :create],
