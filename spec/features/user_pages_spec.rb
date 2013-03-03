@@ -13,6 +13,7 @@ describe "User Pages" do
       uri = URI.parse(current_url)
       "#{uri.path}".should == "/" + user.username
     end
+
   end
 
   describe "the signup process with invalid user", :type => "feature" do
@@ -26,8 +27,16 @@ describe "User Pages" do
   describe "logging in" do
     let(:user) { FactoryGirl.create(:user) }
     before { login(user) }
-
     it { should have_selector('h3', 'Hi Barney') }
 
+  end
+
+  describe "visiting a user's page" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "should be accessible even if the username is capitalized" do
+      visit '/' + user.username.upcase
+      page.should have_selector('h3', :text => 'Hi ' + user.first_name)
+    end
   end
 end

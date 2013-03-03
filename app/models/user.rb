@@ -24,11 +24,13 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :username
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :first_name, :last_name, :username, :avatar
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  attr_accessible :email,  :first_name, :last_name, :username, :avatar
   has_many :places, :dependent => :destroy
+
+  before_save { |user| user.username = username.downcase }
 
   has_attached_file :avatar, :styles => { :thumb => "100x100>" },
                              :path => 'photos/:class/:style.:extension',
