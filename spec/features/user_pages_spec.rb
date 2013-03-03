@@ -8,6 +8,10 @@ describe "User Pages" do
     before { sign_up(user) }
 
     it { should have_selector('h3', :text => 'Hi ' + user.first_name) }
+    it "should be redirect to a URL with a vanity username" do
+      uri = URI.parse(current_url)
+      "#{uri.path}".should == "/" + user.username
+    end
   end
 
   describe "the signup process with invalid user", :type => "feature" do

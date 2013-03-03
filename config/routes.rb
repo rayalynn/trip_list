@@ -7,8 +7,9 @@ TripList::Application.routes.draw do
     post "/signup" => "devise/registrations#create"
   end
 
-  resources :users, :except => [:new, :create]
-  # The priority is based upon order of creation:
+  resources :users, :except => [:new, :create],
+    :path => '/'
+ # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
