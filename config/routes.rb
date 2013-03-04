@@ -9,6 +9,7 @@ TripList::Application.routes.draw do
     get "/login"   => "devise/sessions#new"
   end
 
+  match '/users' => 'users#index'
   resources :users, :except => [:new, :create],
     :path => '/'
  # The priority is based upon order of creation:
