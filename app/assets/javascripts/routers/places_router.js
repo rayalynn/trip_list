@@ -9,8 +9,8 @@ TripList.Routers.Places = Backbone.Router.extend({
   },
 
   index: function() {
-    debugger;
-    var view = new TripList.Views.PlacesIndex({ collection: this.collection });
+    console.log("Creating new view from router");
+    var view = new TripList.Views.PlacesIndex( this.collection );
   }
 
 });

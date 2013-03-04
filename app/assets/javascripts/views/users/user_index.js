@@ -11,7 +11,7 @@ TripList.Views.UserIndex = Backbone.View.extend({
   },
 
   render: function() {
-    $(this.el).append(JST['user/index']({ user: this.collection.user }));
+    $(this.el).append(this.template({ user: this.collection.user }));
     return this;
   }
 });
