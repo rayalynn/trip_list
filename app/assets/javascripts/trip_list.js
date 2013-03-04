@@ -6,8 +6,12 @@ window.TripList = {
   initialize: function(data) {
     var user = new TripList.Models.User(data.user);
     var places = new TripList.Collections.Places(data.places);
-    console.log(user);
-    console.log(places);
+    new TripList.Routers.Users({ collection: places, user: user });
+
+    if (!Backbone.history.started) {
+      Backbone.history.start();
+      Backbone.history.started = true;
+    }
   }
 };
 

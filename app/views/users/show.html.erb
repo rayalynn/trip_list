@@ -1,11 +1,4 @@
-<h3>Hi <%= @user.first_name %></h3>
-<h4>Your places</h4>
-
-<ul>
-<% @user.places.each do |place| %>
-  <li><%= place.title %></li>
-<% end %>
-</ul>
+<div class="user-profile"></div>
 
 <!-- From Thoughtbot Backbone book -->
 <script type="text/json" class="userdata">
@@ -15,12 +8,10 @@
 
   }
 </script>
-  <script type="text/javascript">
-    var div = $('<div></div>');
-    div.html($('.userdata').text());
-    var data = JSON.parse(div.text());
-    
-    console.log(data);
-    TripList.initialize(data);
-  </script>
-</div>
+
+<script type="text/javascript">
+  var div = $('<div></div>');
+  div.html($('.userdata').text());
+  var data = JSON.parse(div.text());
+  TripList.initialize(data);
+</script>
