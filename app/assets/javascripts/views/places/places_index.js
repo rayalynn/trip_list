@@ -1,10 +1,11 @@
 TripList.Views.PlacesIndex = Backbone.View.extend({
 
   template: JST['places/index'],
-  el: $('.container'),
+  el: '.container-fluid', 
 
   initialize: function() {
     _.bindAll(this, 'render');
+    console.log("In places view");
     this.render();
   },
 
