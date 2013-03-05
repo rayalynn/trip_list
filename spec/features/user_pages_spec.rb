@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "User Pages" do
+describe "User Pages", :js => true do
   subject { page }
 
   describe "the signup process", :type => :feature do

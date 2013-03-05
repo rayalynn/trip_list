@@ -1,6 +1,7 @@
 TripList.Routers.Places = Backbone.Router.extend({
-  initialize: function(collection) {
-    this.collection = collection;
+  initialize: function(options) {
+    this.collection = options.collection;
+    this.user = options.user;
     console.log("Places router called");
   },
 
@@ -10,7 +11,7 @@ TripList.Routers.Places = Backbone.Router.extend({
 
   index: function() {
     console.log("Creating new view from router");
-    var view = new TripList.Views.PlacesIndex( this.collection );
+    var view = new TripList.Views.PlacesIndex( {collection: this.collection, user: this.user} );
   }
 
 });
