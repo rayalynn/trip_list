@@ -2,14 +2,16 @@
 #
 # Table name: places
 #
-#  id         :integer          not null, primary key
-#  title      :text
-#  headline   :text
-#  notes      :text
-#  photo_id   :integer
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :integer          not null, primary key
+#  title          :text
+#  headline       :text
+#  notes          :text
+#  photo_id       :integer
+#  user_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  isCompleted    :boolean
+#  completionDate :datetime
 #
 
 require 'spec_helper'
@@ -21,7 +23,7 @@ describe Place do
             notes: "Wikipedia says Barcelona is the capital of Catalonia
               and the second largest city in Spain, after Madrid, with a
               population of 1,621,537 within its administrative limits on
-              a land area of 101.4 km",
+              a land area of 101.4 km"
            )}
 
   subject { @place }
@@ -29,6 +31,8 @@ describe Place do
   it { should respond_to(:headline) }
   it { should respond_to(:title) }
   it { should respond_to(:notes) }
+  it { should respond_to(:isCompleted) }
+  it { should respond_to(:completionDate) }
   it { should belong_to(:user) }
   it { should have_many(:photos) }
 
@@ -80,5 +84,12 @@ describe Place do
         Photo.find_by_id(photo.id).should be_nil
       end
     end
+  end
+
+  describe "completed task" do
+    it "should not be completed by default" do
+      @place.isCompleted.should be_false
+    end
+
   end
 end

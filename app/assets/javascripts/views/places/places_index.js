@@ -12,6 +12,7 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
   render: function() {
     console.log("Render called");
     $(this.el).append("<ul class='placeList'></ul>");
+    debugger;
     _(this.collection.models).each(function(item) {
       this.appendPlace(item);
     }, this);
