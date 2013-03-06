@@ -20,10 +20,10 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
   },
 
   appendPlace: function(item) {
-    var placeListView = new TripList.Views.PlaceListView({
+    var placeItemView = new TripList.Views.PlaceItemView({
       model: item
     });
-    $('ul',this.el).append(placeListView.render().el);
+    $('ul',this.el).append(placeItemView.render().el);
   }
 
 });
