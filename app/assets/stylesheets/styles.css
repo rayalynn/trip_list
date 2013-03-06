@@ -25,3 +25,14 @@
   bottom: 0;
   width: 100%; 
 }
+
+.profile-box {
+  height: 100px;
+  border: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 3px;
+}
+
+.profile-pic {
+
+}
