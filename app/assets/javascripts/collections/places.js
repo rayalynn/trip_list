@@ -1,5 +1,7 @@
 TripList.Collections.Places = Backbone.Collection.extend({
 
-  model: TripList.Models.Place
+  model: TripList.Models.Place,
+  url: '/places'
+
 
 });

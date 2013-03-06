@@ -21,6 +21,7 @@ TripList.Views.PlaceItemView = Backbone.View.extend({
     console.log("Update:");
     console.log(this.model.get('title'));
     console.log("is now set to ", item);
+    this.model.save({ isCompleted: item });
   }
 
 });
