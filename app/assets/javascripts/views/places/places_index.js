@@ -4,26 +4,44 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
   el: '.main_app',
 
   initialize: function() {
-    _.bindAll(this, 'render', 'appendPlace');
+    _.bindAll(this, 'render', 'appendPlace', 'renderCompletedItems', 'renderIncompleteItems');
     console.log("In places view");
     this.render();
   },
 
   render: function() {
-    console.log("Render called");
     $(this.el).append(this.template({user: this.options.user}));
-    $(this.el).append("<ul class='placeList'></ul>");
-    _(this.collection.models).each(function(item) {
+    this.$el.append("<ul></ul>");
+    this.renderIncompleteItems();
+    //this.renderCompletedItems();
+    return this;
+  },
+
+  renderIncompleteItems: function() {
+    var incompleteItems = this.collection.models.filter(function(item){
+      return item.get('isCompleted') === false });
+
+    _(incompleteItems).each(function(item) {
       this.appendPlace(item);
     }, this);
-    return this; 
+
+  },
+
+  renderCompletedItems: function() {
+    var incompleteItems = this.collection.models.filter(function(item){
+      return item.get('isCompleted') === true });
+
+    _(incompleteItems).each(function(item) {
+      this.appendPlace(item);
+    }, this);
+
   },
 
   appendPlace: function(item) {
     var placeItemView = new TripList.Views.PlaceItemView({
-      model: item
+      model: item,
     });
     $('ul',this.el).append(placeItemView.render().el);
-  }
+  },
 
 });
