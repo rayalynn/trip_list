@@ -7,8 +7,8 @@ $navbarBackgroundHighlight: #888;
 $navbarText: #eee;
 $navbarLinkColor: #eee;
 
-@import "bootstrap";
 @import "bootstrap-responsive";
+@import "bootstrap";
 
 .navbar .brand {
   color: #FAFFB8;

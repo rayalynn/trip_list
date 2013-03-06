@@ -1,7 +1,11 @@
-.nav-box {
-  border: 1px solid blue;
+.photo-box-layout {
+  border: 1px solid black;
+  height: 400px;
 }
 
-.main-places-box {
-  border: 1px solid green;
+.photo-title {
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  line-height: 30px;
 }
