@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :thumb => "100x100>" },
                              :path => 'photos/:class/:style.:extension',
-                             :hash_secret => SecureRandom.base64(128)
+                             :hash_secret => SecureRandom.base64(128),
+                             :default_url => ActionController::Base.helpers.asset_path('default_profile_:style.gif')
 
   validates :first_name,   :length => { :in => 2..50 },
                            :format => { :with => /^[a-zA-Z]+$/,

@@ -38,5 +38,10 @@ describe "User Pages", :js => true do
       visit '/' + user.username.upcase
       page.should have_selector('h6', :text => user.first_name)
     end
+
+    it "should have an avatar if no picture is uploaded" do
+      visit '/' + user.username
+      page.should have_selector('img', text: 'profile-pic');
+    end
   end
 end
