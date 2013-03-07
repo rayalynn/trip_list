@@ -3,7 +3,7 @@
 <!-- From Thoughtbot Backbone book -->
 <script type="text/json" class="userdata">
   {
-    "user": <%= @user.to_json %>,
+    "user": <%= render(template: "users/_user.json.rabl") %>,
     "places": <%= @user.places.to_json %>
 
   }

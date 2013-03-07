@@ -54,6 +54,7 @@ gem "high_voltage", "~> 1.2.2"
 gem "friendly_id", "~> 4.0.9"
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem "rabl", "~> 0.8.0"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

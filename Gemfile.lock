@@ -162,6 +162,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    rabl (0.8.0)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -269,6 +271,7 @@ DEPENDENCIES
   marionette-rails!
   paperclip (~> 3.4.1)
   pg
+  rabl (~> 0.8.0)
   rails (= 3.2.11)
   rb-fsevent (~> 0.9)
   rspec-rails (~> 2.13.0)
