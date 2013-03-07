@@ -6,11 +6,15 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render', 'appendPlace', 'renderIncompleteItems');
     console.log("In places view");
+    this.sidebar = new sidebarView();
     this.render();
   },
 
   render: function() {
     console.log("Render called in PlacesIndex");
+    $(this.el).append(this.sidebar.$el);
+    this.sidebar.render();
+    console.log("Finished drawing sidebar");
     $(this.el).append(this.template({user: this.options.user}));
     this.$el.append("<ul></ul>");
     this.renderIncompleteItems();
@@ -34,4 +38,19 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     $(this.el).append(placeItemView.render().el);
   },
 
+});
+
+var sidebarView = Backbone.View.extend({
+  initialize: function() {
+    console.log("Sidebar view initialized");
+    _.bindAll(this, 'render');
+  },
+
+  template: JST['places/sidebar'],
+
+  render: function() {
+    console.log("Rendering sidebar");
+    this.$el.append(this.template);
+    this.delegateEvents();
+  }
 });

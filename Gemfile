@@ -26,6 +26,7 @@ group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem "guard-rspec", "~> 2.4.1"
   gem 'rb-fsevent', '~> 0.9'
+  gem "binding_of_caller", "~> 0.7.1"
 end
 
 group :development, :test do
