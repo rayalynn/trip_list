@@ -7,7 +7,7 @@ describe "User Pages", :js => true do
     let(:user) { FactoryGirl.build(:user) }
     before { sign_up(user) }
 
-    it { should have_selector('h6', :text =>  user.first_name) }
+    it { should have_selector('h5', :text =>  user.first_name) }
 
     it "should be redirect to a URL with a vanity username" do
       uri = URI.parse(current_url)
@@ -27,7 +27,7 @@ describe "User Pages", :js => true do
   describe "logging in" do
     let(:user) { FactoryGirl.create(:user) }
     before { login(user) }
-    it { should have_selector('h6', 'Barney') }
+    it { should have_selector('h5', 'Barney') }
 
   end
 
@@ -36,12 +36,12 @@ describe "User Pages", :js => true do
 
     it "should be accessible even if the username is capitalized" do
       visit '/' + user.username.upcase
-      page.should have_selector('h6', :text => user.first_name)
+      page.should have_selector('h5', :text => user.first_name)
     end
 
     it "should have an avatar if no picture is uploaded" do
       visit '/' + user.username
-      page.should have_selector('img', text: 'profile-pic');
+      find(:xpath, "//img[@class='profile-pic']").should be_true
     end
   end
 end

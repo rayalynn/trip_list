@@ -46,7 +46,6 @@ var sidebarView = Backbone.View.extend({
 
   render: function() {
     console.log("Rendering sidebar");
-    debugger;
     this.$el.append(this.template(this.model));
     this.delegateEvents();
   }

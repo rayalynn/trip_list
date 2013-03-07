@@ -1,5 +1,6 @@
 TripList.Routers.Places = Backbone.Router.extend({
   initialize: function(options) {
+    debugger;
     this.collection = options.collection;
     this.user = options.user;
     console.log("Places router called");
