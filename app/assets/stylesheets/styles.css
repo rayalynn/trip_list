@@ -27,12 +27,13 @@
 }
 
 .profile-box {
-  height: 100px;
+  height: 150px;
   border: 1px solid black;
   border-bottom: 1px solid black;
   padding: 3px;
 }
 
 .profile-pic {
-
+  display: block;
+  margin: 0 auto;
 }
