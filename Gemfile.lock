@@ -6,6 +6,13 @@ GIT
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
 
+GIT
+  remote: https://github.com/chancancode/marionette-rails.git
+  revision: 769648900265d0fffff034570dc08a176c803495
+  specs:
+    marionette-rails (1.0.0.rc6)
+      rails (>= 3.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -253,8 +260,9 @@ DEPENDENCIES
   guard-rspec (~> 2.4.1)
   high_voltage (~> 1.2.2)
   jasmine (~> 1.3.1)
-  jquery-rails
+  jquery-rails (~> 2.2.1)
   launchy (~> 2.2.0)
+  marionette-rails!
   paperclip (~> 3.4.1)
   pg
   rails (= 3.2.11)

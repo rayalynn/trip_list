@@ -19,6 +19,7 @@ group :assets do
   #gem "bootstrap-sass", "~> 2.3.0.1"
   gem "bootstrap-sass", "~> 2.3.0.1"
   gem 'uglifier', '>= 1.0.3'
+  gem 'marionette-rails', :git => 'https://github.com/chancancode/marionette-rails.git'
 end
 
 group :development do
@@ -43,7 +44,7 @@ group :test do
   gem "database_cleaner", "~> 0.9.1"
 end
 
-gem "jquery-rails"
+gem "jquery-rails", "~> 2.2.1"
 gem "paperclip", "~> 3.4.1"
 gem "backbone-on-rails", "~> 0.9.10.0"
 gem "devise", "~> 2.2.3"

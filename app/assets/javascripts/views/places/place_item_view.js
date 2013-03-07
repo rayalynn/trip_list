@@ -1,5 +1,6 @@
-TripList.Views.PlaceItemView = Backbone.View.extend({
+TripList.Views.PlaceItemView = Marionette.ItemView.extend({
 
+  model: TripList.Models.Place,
   template: JST['places/checkboxList'],
   tagName: 'li',
 
@@ -8,20 +9,23 @@ TripList.Views.PlaceItemView = Backbone.View.extend({
   },
 
   initialize: function() {
-    _.bindAll(this, 'render');
+    console.log("New placeItem view created");
+    this.model.on('change', this.render, this);
   },
 
-  render: function() {
-    $(this.el).append(this.template({ item: this.model }));
-    return this; 
+  onRender: function() {
+    console.log("On render called");
+    if (this.model.get('isCompleted')) {
+      console.log("Removing model from screen");
+      this.$el.fadeOut();
+    }
   },
 
   update: function() {
-    var item = this.$('input').prop('checked');
-    console.log("Update:");
     console.log(this.model.get('title'));
-    console.log("is now set to ", item);
-    this.model.save({ isCompleted: item });
+    this.model.save({ isCompleted: !(this.model.get('isCompleted')) });
+    console.log("changed to ");
+    console.log(this.model.get('isCompleted'));
   }
 
 });

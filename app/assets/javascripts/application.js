@@ -27,6 +27,7 @@
 //= require bootstrap-typeahead
 //= require underscore
 //= require backbone
+//= require backbone.marionette
 //= require trip_list
 //= require_tree ../templates
 //= require_tree ./models

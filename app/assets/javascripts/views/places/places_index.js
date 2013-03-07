@@ -10,6 +10,7 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
   },
 
   render: function() {
+    console.log("Render called in PlacesIndex");
     $(this.el).append(this.template({user: this.options.user}));
     this.$el.append("<ul></ul>");
     this.renderIncompleteItems();
@@ -30,7 +31,7 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     var placeItemView = new TripList.Views.PlaceItemView({
       model: item,
     });
-    $('ul',this.el).append(placeItemView.render().el);
+    $(this.el).append(placeItemView.render().el);
   },
 
 });
