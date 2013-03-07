@@ -1,8 +1,11 @@
 <div class="span3">
   <div class="sidebar-nav">
     <div class="profile-box">
-      <b>Username</b>
+      <b><%= this.model.get('first_name') %></b>
       <div class="profile-pic">
+        <img src="
+          <%= this.model.get('avatar_file_name') %>
+        " alt="profile-pic" />
       </div> 
     </div>
     <ul class="nav nav-tabs nav-stacked">
