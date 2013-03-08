@@ -1,8 +1,8 @@
 TripList.Views.PlaceItemView = Marionette.ItemView.extend({
 
   model: TripList.Models.Place,
-  template: JST['places/checkboxList'],
-  tagName: 'li',
+  template: JST['places/place'],
+  className: 'span4 photo-box-layout',
 
   events: {
     'change input': 'update'

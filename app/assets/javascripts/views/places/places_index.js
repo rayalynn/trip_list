@@ -2,18 +2,26 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
 
   template: JST['places/index'],
   el: '.main_app',
+  events: {
+    'click .visited-link': 'renderVisitedPlaces',
+    'click .toVisit-link': 'renderPlacesToVisit'
+  },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'appendPlace', 'renderIncompleteItems');
+    _.bindAll(this, 'render', 'appendPlace', 'renderIncompleteItems',
+             'renderVisitedPlaces', 'renderPlacesToVisit');
     this.sidebar = new sidebarView({ model: this.options.user });
     this.render();
   },
 
   render: function() {
+
+    //append sidebar
     $(this.el).append(this.sidebar.$el);
     this.sidebar.render();
-    $(this.el).append(this.template({user: this.options.user}));
-    this.$el.append("<ul></ul>");
+    $(this.el).append(this.template());
+
+    //append places to visit by default
     this.renderIncompleteItems();
     return this;
   },
@@ -22,6 +30,10 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     var incompleteItems = this.collection.models.filter(function(item){
       return item.get('isCompleted') === false });
 
+    //Create new row
+    $('<div class="row-fluid place-row"></div>').appendTo($('.main-places'));
+
+    //Add pictures to row
     _(incompleteItems).each(function(item) {
       this.appendPlace(item);
     }, this);
@@ -32,12 +44,24 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     var placeItemView = new TripList.Views.PlaceItemView({
       model: item,
     });
-    $(this.el).append(placeItemView.render().el);
+    $('.place-row', this.el).append(placeItemView.render().el);
   },
+
+  renderVisitedPlaces: function(evt) {
+    console.log("Showing visited places");
+    evt.preventDefault();
+  },
+
+  renderPlacesToVisit: function(evt) {
+    console.log("Showing places to visit");
+    evt.preventDefault();
+  }
 
 });
 
 var sidebarView = Backbone.View.extend({
+  el: '.main_app',
+
   initialize: function() {
     _.bindAll(this, 'render');
   },
