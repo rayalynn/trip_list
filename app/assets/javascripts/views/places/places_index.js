@@ -30,11 +30,14 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     var incompleteItems = this.collection.models.filter(function(item){
       return item.get('isCompleted') === false });
 
-    //Create new row
-    $('<div class="row-fluid place-row"></div>').appendTo($('.main-places'));
-
     //Add pictures to row
-    _(incompleteItems).each(function(item) {
+    _(incompleteItems).each(function(item, index) {
+
+      //Create new row if there are more than 3 items
+      if (((index) % 3) === 0) {
+        $('<div class="row-fluid place-row"></div>').appendTo($('.main-places'));
+      }
+
       this.appendPlace(item);
     }, this);
 
@@ -44,7 +47,7 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     var placeItemView = new TripList.Views.PlaceItemView({
       model: item,
     });
-    $('.place-row', this.el).append(placeItemView.render().el);
+    $('.place-row:last', this.el).append(placeItemView.render().el);
   },
 
   renderVisitedPlaces: function(evt) {

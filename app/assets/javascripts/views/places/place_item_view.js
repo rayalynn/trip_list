@@ -10,6 +10,7 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
 
   initialize: function() {
     console.log("New placeItem view created");
+    debugger;
     this.model.on('change', this.render, this);
   },
 
