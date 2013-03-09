@@ -4,20 +4,36 @@ TripList.Views.Places = Backbone.View.extend({
   el: '.main',
 
   initialize: function() {
+    var self = this;
     _.bindAll(this, 'render', 'appendPlace',
              'showVisitedPlaces', 'showPlacesToVisit');
+
+    TripList.vent.on('showVisitedPlaces', function() {
+      self.showVisitedPlaces();
+    });
+    TripList.vent.on('showPlacesToVisit', function() {
+      self.showPlacesToVisit();
+    });
   },
 
   render: function() {
     $('.main_app').append(this.template());
-
     this.showPlacesToVisit();
     return this;
   },
 
+  appendPlace: function(item) {
+    console.log("Append places called");
+    var placeItemView = new TripList.Views.PlaceItemView({
+      model: item,
+    });
+    var renderRetval = placeItemView.render()
+    this.$('.place-row:last').append(renderRetval);
+  },
+
   showPlacesToVisit: function() {
     console.log("Showing incomplete items");
-    $('.main-places').html('');
+    $('.main').html('');
     var incompleteItems = this.collection.remainingPlaces();
 
     //Add pictures to row
@@ -31,18 +47,8 @@ TripList.Views.Places = Backbone.View.extend({
 
   },
 
-  appendPlace: function(item) {
-    console.log("Append places called");
-    var placeItemView = new TripList.Views.PlaceItemView({
-      model: item,
-    });
-    var renderRetval = placeItemView.render()
-    this.$('.place-row:last').append(renderRetval);
-  },
-
-  showVisitedPlaces: function(evt) {
-    console.log("Showing visited places");
-    $('.main-places').html('');
+  showVisitedPlaces: function() {
+    $('.main').html('');
     var completedItems = this.collection.completedPlaces();
 
     _(completedItems).each(function(item, index) {
@@ -55,12 +61,6 @@ TripList.Views.Places = Backbone.View.extend({
       this.appendPlace(item);
     }, this);
 
-    evt.preventDefault();
   },
-
-  renderPlacesToVisit: function(evt) {
-    console.log("Showing places to visit");
-    evt.preventDefault();
-  }
 
 });

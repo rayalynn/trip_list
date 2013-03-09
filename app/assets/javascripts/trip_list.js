@@ -22,13 +22,12 @@ TripList.addInitializer(function(data) {
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
   layout.render();
 
-
   TripList.vent.on("changeToVisitedPage", function(){
-    console.log("Event: Changing to visited pages");
+    TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
   });
-  //if (!Backbone.history.started) {
-    //Backbone.history.start();
-    //Backbone.history.started = true;
-  //}
+
+  TripList.vent.on("changeToPlacesToVisit", function() {
+    TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
+  });
 
 });

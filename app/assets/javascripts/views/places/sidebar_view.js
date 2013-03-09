@@ -1,7 +1,8 @@
 TripList.Views.Sidebar = Backbone.View.extend({
   el: '.sidebar',
   events: {
-    'click .visited-link': 'changeToVisitedPage'
+    'click .visited-link': 'changeToVisitedPage',
+    'click .toVisit-link': 'changeToPlacesToVisitPage'
   },
 
   initialize: function() {
@@ -17,7 +18,10 @@ TripList.Views.Sidebar = Backbone.View.extend({
   //Let event mgr know to change page
   changeToVisitedPage: function() {
     TripList.vent.trigger('changeToVisitedPage');
-  }
+  },
   
+  changeToPlacesToVisitPage: function() {
+    TripList.vent.trigger('changeToPlacesToVisit');
+  }
 });
 
