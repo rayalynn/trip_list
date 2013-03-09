@@ -22,6 +22,10 @@ TripList.addInitializer(function(data) {
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
   layout.render();
 
+
+  TripList.vent.on("changeToVisitedPage", function(){
+    console.log("Event: Changing to visited pages");
+  });
   //if (!Backbone.history.started) {
     //Backbone.history.start();
     //Backbone.history.started = true;

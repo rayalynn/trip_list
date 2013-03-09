@@ -1,11 +1,6 @@
 TripList.Views.Places = Backbone.View.extend({
 
   template: JST['places/index'],
-  events: {
-    'click .visited-link': 'showVisitedPlaces',
-    'click .toVisit-link': 'showPlacesToVisit'
-  },
-
   el: '.main',
 
   initialize: function() {
