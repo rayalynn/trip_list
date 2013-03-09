@@ -4,17 +4,23 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
   el: '.main_app',
   events: {
     'click .visited-link': 'renderVisitedPlaces',
-    'click .toVisit-link': 'renderPlacesToVisit'
+    'click .toVisit-link': 'showPlacesToVisit'
   },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'appendPlace', 'renderIncompleteItems',
-             'renderVisitedPlaces', 'renderPlacesToVisit');
+    _.bindAll(this, 'render', 'appendPlace',
+             'renderVisitedPlaces', 'showPlacesToVisit');
     this.sidebar = new sidebarView({ model: this.options.user });
+    this.header = new headerView();
     this.render();
   },
 
   render: function() {
+    console.log("Render called in PlacesIndex");
+
+    //append header
+    $(this.el).append(this.header.$el);
+    this.header.render();
 
     //append sidebar
     $(this.el).append(this.sidebar.$el);
@@ -22,11 +28,13 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     $(this.el).append(this.template());
 
     //append places to visit by default
-    this.renderIncompleteItems();
+    this.showPlacesToVisit();
     return this;
   },
 
-  renderIncompleteItems: function() {
+  showPlacesToVisit: function() {
+    console.log("Showing incomplete items");
+    $('main-places').html('');
     var incompleteItems = this.collection.models.filter(function(item){
       return item.get('isCompleted') === false });
 
@@ -52,6 +60,22 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
 
   renderVisitedPlaces: function(evt) {
     console.log("Showing visited places");
+    debugger;
+    $('.main-places').html('');
+    var completeItems = this.collection.models.filter(function(item){
+      return item.get('isCompleted') === true });
+
+    //Add pictures to row
+    _(completeItems).each(function(item, index) {
+
+      //Create new row if there are more than 3 items
+      if (((index) % 3) === 0) {
+        $('<div class="row-fluid place-row"></div>').appendTo($('.main-places'));
+      }
+
+      this.appendPlace(item);
+    }, this);
+
     evt.preventDefault();
   },
 
@@ -74,6 +98,23 @@ var sidebarView = Backbone.View.extend({
   render: function() {
     console.log("Rendering sidebar");
     this.$el.append(this.template(this.model));
+    this.delegateEvents();
+  }
+});
+
+var headerView = Backbone.View.extend({
+  el: '.main_app',
+
+  initialize: function() {
+    _.bindAll(this, 'render');
+  },
+
+  template: JST['places/header'],
+
+  render: function() {
+    debugger;
+    console.log("Rendering header");
+    this.$el.append(this.template);
     this.delegateEvents();
   }
 });

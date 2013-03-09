@@ -5,18 +5,14 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   className: 'span4 photo-box-layout',
 
   events: {
-    'change input': 'update'
+    'change input.place-checkbox': 'update'
   },
 
   initialize: function() {
-    $('<a href="#">Test</a>').appendTo('body');
-    console.log("New placeItem view created");
-    debugger;
     this.model.on('change', this.render, this);
   },
 
   onRender: function() {
-    console.log("On render called");
     if (this.model.get('isCompleted')) {
       console.log("Removing model from screen");
       this.$el.fadeOut();
