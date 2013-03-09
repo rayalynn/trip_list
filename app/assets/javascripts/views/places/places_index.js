@@ -34,10 +34,8 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
 
   showPlacesToVisit: function() {
     console.log("Showing incomplete items");
-    debugger;
     $('.main-places').html('');
-    var incompleteItems = this.collection.models.filter(function(item){
-      return item.get('isCompleted') === false });
+    var incompleteItems = this.collection.remainingPlaces();
 
     //Add pictures to row
     _(incompleteItems).each(function(item, index) {
@@ -46,7 +44,6 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
       if (((index) % 3) === 0) {
         $('<div class="row-fluid place-row"></div>').appendTo($('.main-places'));
       }
-
       this.appendPlace(item);
     }, this);
 
@@ -61,13 +58,10 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
 
   renderVisitedPlaces: function(evt) {
     console.log("Showing visited places");
-    debugger;
     $('.main-places').html('');
-    var completeItems = this.collection.models.filter(function(item){
-      return item.get('isCompleted') === true });
+    var completedItems = this.collection.completedPlaces();
 
-    //Add pictures to row
-    _(completeItems).each(function(item, index) {
+    _(completedItems).each(function(item, index) {
 
       //Create new row if there are more than 3 items
       if (((index) % 3) === 0) {
@@ -97,7 +91,6 @@ var sidebarView = Backbone.View.extend({
   template: JST['places/sidebar'],
 
   render: function() {
-    console.log("Rendering sidebar");
     this.$el.append(this.template(this.model));
     this.delegateEvents();
   }
@@ -113,8 +106,6 @@ var headerView = Backbone.View.extend({
   template: JST['places/header'],
 
   render: function() {
-    debugger;
-    console.log("Rendering header");
     this.$el.append(this.template);
     this.delegateEvents();
   }

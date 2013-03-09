@@ -5,7 +5,7 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   className: 'span4 photo-box-layout',
 
   events: {
-    'change input.place-checkbox': 'update'
+    'change input': 'update'
   },
 
   initialize: function() {
