@@ -9,10 +9,15 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   },
 
   initialize: function() {
+    _.bindAll(this, 'render', 'removeFromScreen');
     this.model.on('change', this.render, this);
   },
 
-  onRender: function() {
+  render: function() {
+    return this.$el.append(this.template(this.model));
+  },
+
+  removeFromScreen: function() {
     if (this.model.get('isCompleted')) {
       console.log("Removing model from screen");
       this.$el.fadeOut();
@@ -20,10 +25,8 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   },
 
   update: function() {
-    console.log(this.model.get('title'));
     this.model.save({ isCompleted: !(this.model.get('isCompleted')) });
-    console.log("changed to ");
-    console.log(this.model.get('isCompleted'));
+    this.removeFromScreen();
   }
 
 });

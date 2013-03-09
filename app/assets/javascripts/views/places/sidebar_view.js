@@ -1,5 +1,5 @@
 TripList.Views.Sidebar = Backbone.View.extend({
-
+  el: '.sidebar',
   initialize: function() {
     _.bindAll(this, 'render');
   },

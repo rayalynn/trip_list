@@ -7,7 +7,6 @@ TripList.Views.Header = Backbone.View.extend({
   template: JST['places/header'],
 
   render: function() {
-    debugger;
     this.$el.append(this.template);
   }
 });
