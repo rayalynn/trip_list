@@ -28,6 +28,7 @@
 //= require underscore
 //= require backbone
 //= require backbone.marionette
+//= require backbone-forms
 //= require trip_list
 //= require_tree ../templates
 //= require_tree ./models

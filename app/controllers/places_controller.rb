@@ -7,4 +7,13 @@ class PlacesController < ApplicationController
     respond_with(place);
   end
 
+  def create
+    place = current_user.places.build(params[:place]);
+    if place.save
+      logger.debug "\n\nSuccessfully saved."
+    else
+      logger.debug "\n\n Error saving"
+    end
+  end
+
 end

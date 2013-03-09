@@ -61,3 +61,6 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
  }
 
+ .center {
+  text-align: center;
+ }

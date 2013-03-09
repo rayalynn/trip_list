@@ -32,6 +32,9 @@ TripList.addInitializer(function(data) {
 
   TripList.vent.on("addNewPlace", function() {
     console.log("Add new place triggered");
-  });
+    layout.main.close();
+    var placeForm = new TripList.Views.NewPlace();
+    layout.main.show(placeForm);
 
+  });
 });
