@@ -1,7 +1,6 @@
 TripList.Views.PlacesIndex = Backbone.View.extend({
 
   template: JST['places/index'],
-  el: '.main_app',
   events: {
     'click .visited-link': 'renderVisitedPlaces',
     'click .toVisit-link': 'showPlacesToVisit'
@@ -11,17 +10,12 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
     _.bindAll(this, 'render', 'appendPlace',
              'renderVisitedPlaces', 'showPlacesToVisit');
     this.sidebar = new sidebarView({ model: this.options.user });
-    this.header = new headerView();
     this.render();
   },
 
   render: function() {
     console.log("Render called in PlacesIndex");
-
-    //append header
-    $(this.el).append(this.header.$el);
-    this.header.render();
-
+    debugger;
     //append sidebar
     $(this.el).append(this.sidebar.$el);
     this.sidebar.render();
@@ -96,17 +90,17 @@ var sidebarView = Backbone.View.extend({
   }
 });
 
-var headerView = Backbone.View.extend({
-  el: '.main_app',
+//var headerView = Backbone.View.extend({
+  //el: '.main_app',
 
-  initialize: function() {
-    _.bindAll(this, 'render');
-  },
+  //initialize: function() {
+    //_.bindAll(this, 'render');
+  //},
 
-  template: JST['places/header'],
+  //template: JST['places/header'],
 
-  render: function() {
-    this.$el.append(this.template);
-    this.delegateEvents();
-  }
-});
+  //render: function() {
+    //this.$el.append(this.template);
+    //this.delegateEvents();
+  //}
+//});
