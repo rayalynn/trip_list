@@ -1,5 +1,5 @@
 TripList.Views.Header = Backbone.View.extend({
-  className: 'navbar',
+  el: '.header',
   initialize: function() {
     _.bindAll(this, 'render');
   },
@@ -7,7 +7,7 @@ TripList.Views.Header = Backbone.View.extend({
   template: JST['places/header'],
 
   render: function() {
+    debugger;
     this.$el.append(this.template);
-    this.delegateEvents();
   }
 });

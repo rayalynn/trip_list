@@ -4,7 +4,6 @@ TripList.Collections.Places = Backbone.Collection.extend({
   url: '/places',
 
   remainingPlaces: function() {
-    debugger;
     return this.where({ isCompleted: false });
   },
 
