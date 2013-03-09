@@ -9,6 +9,7 @@ TripList.Views.Places = Backbone.View.extend({
              'showVisitedPlaces', 'showPlacesToVisit');
 
     TripList.vent.on('showVisitedPlaces', function() {
+      console.log("View Place show visited places");
       self.showVisitedPlaces();
     });
     TripList.vent.on('showPlacesToVisit', function() {

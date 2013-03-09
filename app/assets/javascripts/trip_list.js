@@ -30,4 +30,8 @@ TripList.addInitializer(function(data) {
     TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
   });
 
+  TripList.vent.on("addNewPlace", function() {
+    console.log("Add new place triggered");
+  });
+
 });
