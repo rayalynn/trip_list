@@ -34,7 +34,8 @@ TripList.Views.PlacesIndex = Backbone.View.extend({
 
   showPlacesToVisit: function() {
     console.log("Showing incomplete items");
-    $('main-places').html('');
+    debugger;
+    $('.main-places').html('');
     var incompleteItems = this.collection.models.filter(function(item){
       return item.get('isCompleted') === false });
 
