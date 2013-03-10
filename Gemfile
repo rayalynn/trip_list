@@ -47,6 +47,7 @@ end
 
 gem "jquery-rails", "~> 2.2.1"
 gem "paperclip", "~> 3.4.1"
+gem "nokogiri", "~> 1.5.6"
 gem "backbone-on-rails", "~> 0.9.10.0"
 gem "devise", "~> 2.2.3"
 gem "aws-sdk", "~> 1.8.3.1"
