@@ -16,16 +16,18 @@ TripList.Views.Places = Backbone.View.extend({
     TripList.vent.on('showPlacesToVisit', function() {
       self.showPlacesToVisit();
     });
+
+    this.collection.bind('change', this.render);
   },
 
   render: function() {
+    console.log("Render being called in Places View");
     $('.main_app').append(this.template());
     this.showPlacesToVisit();
     return this;
   },
 
   appendPlace: function(item) {
-    console.log("Append places called");
     var placeItemView = new TripList.Views.PlaceItemView({
       model: item,
     });
@@ -34,7 +36,6 @@ TripList.Views.Places = Backbone.View.extend({
   },
 
   showPlacesToVisit: function() {
-    console.log("Showing incomplete items");
     $('.main').html('');
     var incompleteItems = this.collection.remainingPlaces();
 

@@ -22,7 +22,7 @@ TripList.Views.NewPlace = Backbone.View.extend({
   render: function() {
     this.form.render();
     $(this.el).append(this.form.el);
-    $('form').append('<button type="submit" class="submit" value="submit">');
+    $('form').append('<input type="submit" class="submit" value="submit"/>');
 
   },
 
