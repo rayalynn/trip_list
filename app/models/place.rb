@@ -23,9 +23,8 @@ class Place < ActiveRecord::Base
   after_create :download_default_image
 
   has_attached_file :photo, :styles => { :thumb => "300x300" },
-                            :path => 'photos/:class/:style.:extension',
-                            :hash_secret => SecureRandom.base64(128),
-                            :default_url => ActionController::Base.helpers.asset_path('default_place_:style.gif')
+                            :path => 'photos/:class/:hash/:style.:extension',
+                            :hash_secret => SecureRandom.base64(128)
 
 
   validates :title,    :length => { :in => 3..40 }
@@ -41,6 +40,8 @@ class Place < ActiveRecord::Base
       image_path = img['src']
     end
 
+    logger.debug "\n\n--------\n\n"
+    logger.debug "Saving #{self.title} at #{image_path}"
     self.photo = URI.parse(image_path)
     self.save()
   end
