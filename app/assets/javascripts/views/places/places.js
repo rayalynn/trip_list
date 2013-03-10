@@ -3,27 +3,32 @@ TripList.Views.Places = Backbone.View.extend({
   template: JST['places/index'],
   el: '.main',
   url: '/places',
+  collection: TripList.Collections.Places, 
 
   initialize: function() {
     var self = this;
 
     _.bindAll(this, 'render', 'appendPlace', 'init_masonry',
-             'showVisitedPlaces', 'showPlacesToVisit');
+             'showVisitedPlaces', 'showPlacesToVisit',
+             'appendNewItem');
 
-    TripList.vent.on('changeToPlacesToVisit', function() {
+    TripList.vent.on('showVisitedPlaces', function() {
       console.log("in show visited places on main");
-      self.showVisitedPlaces();
+      //self.showVisitedPlaces();
+      self.render();
     });
     TripList.vent.on('showPlacesToVisit', function() {
       console.log("In main show places to visit event");
+      self.showPlacesToVisit();
       self.render();
     });
 
-    this.collection.bind('add', this.render);
+    this.collection.bind('add', this.appendNewItem);
     this.collection.bind('remove', this.render);
   },
 
   render: function() {
+    debugger;
     console.log("Calling main render function");
     this.collection.fetch();
     this.showPlacesToVisit();
@@ -67,6 +72,7 @@ TripList.Views.Places = Backbone.View.extend({
   },
 
   showPlacesToVisit: function() {
+    this.collection.fetch();
     $('.main').html('');
     var incompleteItems = this.collection.remainingPlaces();
     _(incompleteItems).each(function(item) {
@@ -85,5 +91,12 @@ TripList.Views.Places = Backbone.View.extend({
     }, this);
 
   },
+
+  appendNewItem: function() {
+    console.log("This collection updated.");
+    var collection = this.collection.fetch();
+    debugger;
+        //var lastItem = this.collection.last;
+  }
 
 });

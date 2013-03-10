@@ -4,7 +4,6 @@ TripList.Views.Sidebar = Backbone.View.extend({
     'click .visited-link': 'changeToVisitedPage',
     'click .toVisit-link': 'changeToPlacesToVisitPage',
     'click .addNewPlace': 'addNewPlace'
-
   },
 
   initialize: function() {

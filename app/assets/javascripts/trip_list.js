@@ -18,21 +18,19 @@ Backbone.Marionette.Renderer.render = function(template, data){
 TripList.addInitializer(function(data) {
   var user = new TripList.Models.User(data.user);
   var places = new TripList.Collections.Places(data.places);
-
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
+
   layout.render();
 
   TripList.vent.on("changeToVisitedPage", function(){
+    console.log("Changing to visited places");
     TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
   });
 
   TripList.vent.on("changeToPlacesToVisit", function() {
-    //layout.main.reset();
-    //layout.main.show();
-
     TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
   });
-
+  
   TripList.vent.on("addNewPlace", function() {
     console.log("Add new place triggered");
     layout.main.close();
