@@ -14,19 +14,14 @@ TripList.Views.Places = Backbone.View.extend({
       self.showVisitedPlaces();
     });
     TripList.vent.on('showPlacesToVisit', function() {
-      self.render();
-      //self.showPlacesToVisit();
+      self.showPlacesToVisit();
     });
 
     this.collection.bind('add', this.render);
   },
 
   render: function() {
-    console.log("Render being called in Places View");
-    console.log("About to fetch collection");
-    //THIS IS ASYNC
-    this.collection.fetch();
-    console.log("Collection theoretically updated");
+
     this.showPlacesToVisit();
     this.init_masonry();
     return this;
