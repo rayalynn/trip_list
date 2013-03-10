@@ -30,7 +30,6 @@ TripList.addInitializer(function(data) {
     //layout.main.reset();
     //layout.main.show();
 
-    debugger;
     TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
   });
 

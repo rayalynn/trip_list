@@ -15,7 +15,6 @@
 
 class Photo < ActiveRecord::Base
   attr_accessible :image, :isMainPhoto
-  belongs_to :place
 
   has_attached_file :image, :styles => { :thumb => "300x300>" },
                              :path => 'photos/:class/:style.:extension',

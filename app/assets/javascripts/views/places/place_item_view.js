@@ -14,6 +14,7 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   },
 
   render: function() {
+    debugger;
     return this.$el.append(this.template(this.model));
   },
 

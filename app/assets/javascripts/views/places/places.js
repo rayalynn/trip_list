@@ -37,6 +37,7 @@ TripList.Views.Places = Backbone.View.extend({
 
   showPlacesToVisit: function() {
     $('.main').html('');
+    debugger;
     var incompleteItems = this.collection.remainingPlaces();
 
     //Add pictures to row

@@ -17,11 +17,16 @@ require 'open-uri'
 require 'nokogiri'
 
 class Place < ActiveRecord::Base
-  attr_accessible :headline, :notes, :photo_id, :title,
+  attr_accessible :headline, :notes, :photo, :title,
                   :isCompleted, :completionDate
   belongs_to :user
-  has_many :photos, :dependent => :destroy
   after_create :download_default_image
+
+  has_attached_file :photo, :styles => { :thumb => "300x300" },
+                            :path => 'photos/:class/:style.:extension',
+                            :hash_secret => SecureRandom.base64(128),
+                            :default_url => ActionController::Base.helpers.asset_path('default_place_:style.gif')
+
 
   validates :title,    :length => { :in => 3..40 }
   validates :headline, :length => { :maximum => 70 }
@@ -36,10 +41,7 @@ class Place < ActiveRecord::Base
       image_path = img['src']
     end
 
-    logger.debug "Attempting to build photo with " + image_path
-    photo = self.photos.build();
-    photo.image = URI.parse(image_path)
-    photo.isMainPhoto = true
-    photo.save()
+    self.photo = URI.parse(image_path)
+    self.save()
   end
 end
