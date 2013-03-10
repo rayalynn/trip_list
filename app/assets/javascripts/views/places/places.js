@@ -5,6 +5,7 @@ TripList.Views.Places = Backbone.View.extend({
 
   initialize: function() {
     var self = this;
+
     _.bindAll(this, 'render', 'appendPlace',
              'showVisitedPlaces', 'showPlacesToVisit');
 

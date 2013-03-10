@@ -25,7 +25,10 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   },
 
   update: function() {
-    this.model.save({ isCompleted: !(this.model.get('isCompleted')) });
+    console.log("updating model.", this.model);
+    this.model.set({isCompleted: true});
+    this.model.save();
+    //this.model.save({ isCompleted: !(this.model.get('isCompleted'))});
     this.removeFromScreen();
   }
 

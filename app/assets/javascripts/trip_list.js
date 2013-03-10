@@ -27,6 +27,10 @@ TripList.addInitializer(function(data) {
   });
 
   TripList.vent.on("changeToPlacesToVisit", function() {
+    //layout.main.reset();
+    //layout.main.show();
+
+    debugger;
     TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
   });
 

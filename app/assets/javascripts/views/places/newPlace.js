@@ -31,6 +31,7 @@ TripList.Views.NewPlace = Backbone.View.extend({
     var place = new TripList.Models.Place(data);
     place.save();
     evt.preventDefault();
+    TripList.vent.trigger('changeToPlacesToVisit');
   }
 });
 
