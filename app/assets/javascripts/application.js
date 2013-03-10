@@ -29,6 +29,7 @@
 //= require backbone
 //= require backbone.marionette
 //= require backbone-forms
+//= require masonry
 //= require trip_list
 //= require_tree ../templates
 //= require_tree ./models

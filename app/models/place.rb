@@ -32,7 +32,8 @@ class Place < ActiveRecord::Base
   validates :user,     :presence => true
 
   def download_default_image
-    path = 'http://' + self.title + '.jpg.to'
+    url_title = self.title.gsub(/\s+/, "")
+    path = 'http://' + url_title + '.jpg.to'
 
     doc = Nokogiri::HTML(open(path))
     image_path = ""

@@ -6,7 +6,7 @@ TripList.Views.Places = Backbone.View.extend({
   initialize: function() {
     var self = this;
 
-    _.bindAll(this, 'render', 'appendPlace',
+    _.bindAll(this, 'render', 'appendPlace', 'init_masonry',
              'showVisitedPlaces', 'showPlacesToVisit');
 
     TripList.vent.on('showVisitedPlaces', function() {
@@ -21,10 +21,38 @@ TripList.Views.Places = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("Render being called in Places View");
-    $('.main_app').append(this.template());
+
+     console.log("Render being called in Places View");
     this.showPlacesToVisit();
+    this.init_masonry();
     return this;
+  },
+
+  init_masonry: function() {
+    var $container = $('.main');
+    var gutter = 40;
+    var min_width = 200;
+    $container.imagesLoaded( function(){
+        $container.masonry({
+            itemSelector : '.main-box',
+            gutterWidth: gutter,
+            isAnimated: true,
+              columnWidth: function( containerWidth ) {
+                var num_of_boxes = (containerWidth/min_width | 0);
+
+                var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
+
+                if (containerWidth < min_width) {
+                    box_width = containerWidth;
+                }
+
+                $('.main-box').width(box_width);
+
+                return box_width;
+              }
+        });
+    });
+
   },
 
   appendPlace: function(item) {
@@ -32,36 +60,24 @@ TripList.Views.Places = Backbone.View.extend({
       model: item,
     });
     var renderRetval = placeItemView.render()
-    this.$('.place-row:last').append(renderRetval);
+    this.$el.append(renderRetval);
   },
 
   showPlacesToVisit: function() {
     $('.main').html('');
-    debugger;
     var incompleteItems = this.collection.remainingPlaces();
-
-    //Add pictures to row
-    _(incompleteItems).each(function(item, index) {
-      //Create new row if there are more than 3 items
-      if (((index) % 3) === 0) {
-        $('<div class="row-fluid place-row"></div>').appendTo($('.main'));
-      }
+    _(incompleteItems).each(function(item) {
       this.appendPlace(item);
     }, this);
 
   },
 
   showVisitedPlaces: function() {
+    console.log("Showing complete places");
     $('.main').html('');
     var completedItems = this.collection.completedPlaces();
-
-    _(completedItems).each(function(item, index) {
-
-      //Create new row if there are more than 3 items
-      if (((index) % 3) === 0) {
-        $('<div class="row-fluid place-row"></div>').appendTo($('.main'));
-      }
-
+    _(completedItems).each(function(item) {
+      $('<div class="main-box"></div>').appendTo($('.main'));
       this.appendPlace(item);
     }, this);
 

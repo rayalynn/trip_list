@@ -2,7 +2,7 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
 
   model: TripList.Models.Place,
   template: JST['places/place'],
-  className: 'span4 photo-box-layout',
+  className: 'main-box',
 
   events: {
     'change input': 'update'
@@ -14,7 +14,7 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   },
 
   render: function() {
-    debugger;
+    //debugger;
     return this.$el.append(this.template(this.model));
   },
 
