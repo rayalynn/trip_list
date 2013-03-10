@@ -14,7 +14,6 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   },
 
   render: function() {
-    //debugger;
     return this.$el.append(this.template(this.model));
   },
 
@@ -22,6 +21,7 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
     if (this.model.get('isCompleted')) {
       console.log("Removing model from screen");
       this.$el.fadeOut();
+      TripList.vent.trigger("redrawPage");
     }
   },
 

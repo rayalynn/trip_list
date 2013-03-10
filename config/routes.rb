@@ -10,9 +10,10 @@ TripList::Application.routes.draw do
   end
 
   match '/users' => 'users#index'
+  resources :places
   resources :users, :except => [:new, :create],
     :path => '/'
-  resources :places
+
  # The priority is based upon order of creation:
   # first created -> highest priority.
 

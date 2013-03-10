@@ -17,4 +17,10 @@ class PlacesController < ApplicationController
     end
   end
 
+  def index
+    logger.debug "\n\n\n-------In index of Places"
+    places = current_user.places
+    respond_with(@places = current_user.places)
+  end
+
 end

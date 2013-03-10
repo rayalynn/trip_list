@@ -10,18 +10,22 @@ TripList.Views.Places = Backbone.View.extend({
     _.bindAll(this, 'render', 'appendPlace', 'init_masonry',
              'showVisitedPlaces', 'showPlacesToVisit');
 
-    TripList.vent.on('showVisitedPlaces', function() {
+    TripList.vent.on('changeToPlacesToVisit', function() {
+      console.log("in show visited places on main");
       self.showVisitedPlaces();
     });
     TripList.vent.on('showPlacesToVisit', function() {
-      self.showPlacesToVisit();
+      console.log("In main show places to visit event");
+      self.render();
     });
 
     this.collection.bind('add', this.render);
+    this.collection.bind('remove', this.render);
   },
 
   render: function() {
-
+    console.log("Calling main render function");
+    this.collection.fetch();
     this.showPlacesToVisit();
     this.init_masonry();
     return this;

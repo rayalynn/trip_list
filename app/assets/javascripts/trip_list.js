@@ -38,6 +38,6 @@ TripList.addInitializer(function(data) {
     layout.main.close();
     var placeForm = new TripList.Views.NewPlace();
     layout.main.show(placeForm);
-
   });
+
 });
