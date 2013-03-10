@@ -2,6 +2,7 @@ TripList.Views.Places = Backbone.View.extend({
 
   template: JST['places/index'],
   el: '.main',
+  url: '/places',
 
   initialize: function() {
     var self = this;
@@ -10,19 +11,22 @@ TripList.Views.Places = Backbone.View.extend({
              'showVisitedPlaces', 'showPlacesToVisit');
 
     TripList.vent.on('showVisitedPlaces', function() {
-      console.log("View Place show visited places");
       self.showVisitedPlaces();
     });
     TripList.vent.on('showPlacesToVisit', function() {
-      self.showPlacesToVisit();
+      self.render();
+      //self.showPlacesToVisit();
     });
 
-    this.collection.bind('change', this.render);
+    this.collection.bind('add', this.render);
   },
 
   render: function() {
-
-     console.log("Render being called in Places View");
+    console.log("Render being called in Places View");
+    console.log("About to fetch collection");
+    //THIS IS ASYNC
+    this.collection.fetch();
+    console.log("Collection theoretically updated");
     this.showPlacesToVisit();
     this.init_masonry();
     return this;

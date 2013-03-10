@@ -56,6 +56,14 @@
   font-weight: bold;
 }
 
+.place-actions {
+  margin: 0 -15px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #F2F0F0;
+  color: black;
+}
+
 /*.photo-box img {*/
   /*margin: 0 -15px;*/
   /*padding: 10px 15px;*/
