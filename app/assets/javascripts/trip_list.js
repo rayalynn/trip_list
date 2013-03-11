@@ -27,11 +27,15 @@ TripList.addInitializer(function(data) {
 
   //Events
   TripList.vent.on("showVisitedPage", function(){
-    console.log("Event catch in main showVisitedPage");
     layout.content.currentView.close();
     $('<div class="main span9"></div>').appendTo($('.app'));
-    var mainView = new TripList.Views.VisitedPlaces({collection: places, user: user});
-    layout.content.show(mainView);
+    var updatedCollection = new TripList.Collections.Places;
+    updatedCollection.fetch({
+      success: function(results) {
+        var mainView = new TripList.Views.VisitedPlaces({collection: results, user: user});
+        layout.content.show(mainView);
+      }
+    });
   });
 
   TripList.vent.on("showToVisitPage", function() {
