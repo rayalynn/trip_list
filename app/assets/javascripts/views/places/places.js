@@ -10,17 +10,11 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
     var self = this;
 
     _.bindAll(this, 'render', 'appendPlace', 'init_masonry',
-             'showVisitedPlaces', 'showPlacesToVisit',
-             'appendNewItem');
+             'showVisitedPlaces', 'appendNewItem');
 
     TripList.vent.on('showVisitedPlaces', function() {
       console.log("in show visited places on main");
       self.showVisitedPlaces();
-      //self.render();
-    });
-    TripList.vent.on('showPlacesToVisit', function() {
-      console.log("In main show places to visit event");
-      self.showPlacesToVisit();
     });
 
     this.collection.bind('add', this.appendNewItem);
@@ -63,7 +57,6 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
               }
         });
     });
-
   },
 
   appendPlace: function(item) {

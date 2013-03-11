@@ -28,15 +28,18 @@ TripList.addInitializer(function(data) {
   //Events
   TripList.vent.on("showVisitedPage", function(){
     console.log("Event catch in main showVisitedPage");
-    TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
+    layout.content.currentView.close();
+    $('<div class="main span9"></div>').appendTo($('.app'));
+    var mainView = new TripList.Views.VisitedPlaces({collection: places, user: user});
+    layout.content.show(mainView);
+
+    //TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
   });
 
   TripList.vent.on("showToVisitPage", function() {
-    console.log("In show to visit page");
     layout.content.currentView.close();
     $('<div class="main span9"></div>').appendTo($('.app'));
     var mainView = new TripList.Views.Places({collection: places, user: user});
-
     layout.content.show(mainView);
   });
   
