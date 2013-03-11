@@ -33,9 +33,11 @@ TripList.addInitializer(function(data) {
 
   TripList.vent.on("showToVisitPage", function() {
     console.log("In show to visit page");
-    //var mainView = new TripList.Views.Places({collection: places, user: user});
-    //layout.main.show(mainView);
-    //layout.main.reset();
+    layout.content.currentView.close();
+    $('<div class="main span9"></div>').appendTo($('.app'));
+    var mainView = new TripList.Views.Places({collection: places, user: user});
+
+    layout.content.show(mainView);
   });
   
   TripList.vent.on("addNewPlace", function() {
