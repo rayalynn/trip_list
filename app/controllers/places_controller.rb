@@ -5,7 +5,6 @@ class PlacesController < ApplicationController
     logger.debug "\n\nIN places update()"
     place = current_user.places.find(params[:id])
     place.update_attributes(params[:place])
-    #respond_with(place);
   end
 
   def create
@@ -18,8 +17,9 @@ class PlacesController < ApplicationController
   end
 
   def index
-    logger.debug "\n\n\n-------In index of Places"
+    logger.debug "\n\n\n-------In index of Places\n\n"
     places = current_user.places
+    logger.debug "Places: " + places.to_s
     respond_with(@places = current_user.places)
   end
 

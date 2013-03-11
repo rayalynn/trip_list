@@ -38,9 +38,13 @@ TripList.addInitializer(function(data) {
     console.log("Showing places to visit");
     layout.content.currentView.close();
     $('<div class="main span9"></div>').appendTo($('.app'));
-    var mainView = new TripList.Views.UnvisitedPlaces({collection: places, user: user});
-    debugger;
-    layout.content.show(mainView);
+    var updatedCollection = new TripList.Collections.Places;
+    updatedCollection.fetch({
+      success: function(results) {
+        var mainView = new TripList.Views.UnvisitedPlaces({collection: results, user: user});
+        layout.content.show(mainView);
+      }
+    });
   });
   
   TripList.vent.on("addNewPlace", function() {

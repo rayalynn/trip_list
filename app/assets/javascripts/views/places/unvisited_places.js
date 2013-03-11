@@ -3,24 +3,22 @@ TripList.Views.UnvisitedPlaces = Backbone.Marionette.CollectionView.extend({
   itemView: TripList.Views.PlaceItemView, 
   template: JST['places/index'],
   el: '.main',
-  url: '/places',
 
   collection: TripList.Collections.Places, 
 
   initialize: function() {
-    var self = this;
-
-    _.bindAll(this, 'render', 'appendPlace', 'init_masonry', 'appendNewItem');
-
-    this.collection.bind('add', this.appendNewItem);
-    this.collection.bind('remove', this.render);
+    console.log("Initialized being called");
   },
+
 
   render: function() {
     console.log("Calling main render function in unvisited places");
     this.showPlacesToVisit();
-    this.init_masonry();
     return this;
+  },
+
+  onShow: function() {
+    this.init_masonry();
   },
 
   init_masonry: function() {

@@ -23,8 +23,8 @@ class Place < ActiveRecord::Base
   after_create :download_default_image
 
   has_attached_file :photo, :styles => { :thumb => "300x300" },
-                            :path => 'photos/:class/:hash/:style.:extension',
-                            :hash_secret => SecureRandom.base64(128)
+                            :path => 'photos/:class/:hash_:style.:extension',
+                            :hash_secret => 'anything'
 
 
   validates :title,    :length => { :in => 3..40 }
