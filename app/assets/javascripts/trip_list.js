@@ -56,5 +56,12 @@ TripList.addInitializer(function(data) {
     layout.content.show(placeForm);
   });
 
+  TripList.vent.on("showDetailedItem", function(curItem) {
+    layout.content.currentView.close();
+    $('<div class="main span9"></div>').appendTo($('.app'));
+    var itemDetails = new TripList.Views.DetailedItemView({model: curItem});
+    layout.content.show(itemDetails);
+  });
+
 });
 
