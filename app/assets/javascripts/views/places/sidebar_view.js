@@ -1,22 +1,15 @@
-TripList.Views.Sidebar = Backbone.View.extend({
+TripList.Views.Sidebar = Backbone.Marionette.ItemView.extend({
+
   el: '.sidebar',
+
+  template: 'places/sidebar',
+
   events: {
-    'click .visited-link': 'changeToVisitedPage',
-    'click .toVisit-link': 'changeToPlacesToVisitPage',
+    'click .visited': 'changeToVisitedPage',
+    'click .toVisit': 'changeToPlacesToVisitPage',
     'click .addNewPlace': 'addNewPlace'
   },
 
-  initialize: function() {
-    _.bindAll(this, 'render', 'changeToVisitedPage');
-  },
-
-  template: JST['places/sidebar'],
-
-  render: function() {
-    this.$el.append(this.template(this.model));
-  },
-  
-  //Let event mgr know to change page
   changeToVisitedPage: function() {
     console.log("Change to visited page triggered");
     TripList.vent.trigger('changeToVisitedPage');

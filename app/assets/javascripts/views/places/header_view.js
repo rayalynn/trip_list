@@ -1,12 +1,11 @@
-TripList.Views.Header = Backbone.View.extend({
+TripList.Views.Header = Backbone.Marionette.ItemView.extend({
+
   el: '.header',
+
+  template: 'places/header',
+
   initialize: function() {
     _.bindAll(this, 'render');
   },
-  template: JST['places/header'],
-
-  render: function() {
-    this.$el.append(this.template);
-  }
 
 });

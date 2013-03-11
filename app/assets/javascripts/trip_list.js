@@ -1,3 +1,4 @@
+//Create Marionette app
 window.TripList = new Backbone.Marionette.Application();
 _.extend(TripList, {
   Models: {},
@@ -16,24 +17,26 @@ Backbone.Marionette.Renderer.render = function(template, data){
 
 //TripList initializer
 TripList.addInitializer(function(data) {
+
+  //load initial data
   var user = new TripList.Models.User(data.user);
   var places = new TripList.Collections.Places(data.places);
-  var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
 
+  var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
   layout.render();
 
+  //Events
   TripList.vent.on("changeToVisitedPage", function(){
-    console.log("Changing to visited places");
     TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
   });
 
   TripList.vent.on("changeToPlacesToVisit", function() {
-    console.log("Change to places to visit in initializer");
-    TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
+    var mainView = new TripList.Views.Places({collection: places, user: user});
+    layout.main.show(mainView);
+    layout.main.reset();
   });
   
   TripList.vent.on("addNewPlace", function() {
-    console.log("Add new place triggered");
     var placeForm = new TripList.Views.NewPlace();
     layout.main.show(placeForm);
   });

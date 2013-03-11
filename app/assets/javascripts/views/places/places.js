@@ -2,7 +2,7 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
   itemView: TripList.Views.PlaceItemView, 
 
   template: JST['places/index'],
-  el: '.main_app',
+  el: '.main',
   url: '/places',
   collection: TripList.Collections.Places, 
 
@@ -29,9 +29,14 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
 
   render: function() {
     console.log("Calling main render function");
+    if (this.el === undefined) {
+      console.log("Creating el");
+      $('<div class="main_app"></div>').appendTo('.maincol');
+      this.el = '.main_app';
+    }
     this.showPlacesToVisit();
     this.init_masonry();
-    return this;
+    //return this;
   },
 
   init_masonry: function() {
@@ -73,6 +78,7 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
     $(this.el).html('');
     var incompleteItems = this.collection.remainingPlaces();
     _(incompleteItems).each(function(item) {
+      //$('<div class="main-box"></div>').appendTo($('.main_app'));
       this.appendPlace(item);
     }, this);
 
@@ -83,10 +89,9 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
     $(this.el).html('');
     var completedItems = this.collection.completedPlaces();
     _(completedItems).each(function(item) {
-      $('<div class="main-box"></div>').appendTo($('.main'));
+      //$('<div class="main-box"></div>').appendTo($('.main_app'));
       this.appendPlace(item);
     }, this);
-
   },
 
   appendNewItem: function() {

@@ -33,6 +33,7 @@ TripList.Views.NewPlace = Backbone.View.extend({
     data = null;
     form = null;
     console.log("Triggering event");
+    $(this.el).html('');
     TripList.vent.trigger('changeToPlacesToVisit');
   }
 });
