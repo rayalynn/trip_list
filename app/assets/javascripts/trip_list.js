@@ -32,20 +32,25 @@ TripList.addInitializer(function(data) {
     $('<div class="main span9"></div>').appendTo($('.app'));
     var mainView = new TripList.Views.VisitedPlaces({collection: places, user: user});
     layout.content.show(mainView);
-
-    //TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
   });
 
   TripList.vent.on("showToVisitPage", function() {
+    console.log("Showing places to visit");
     layout.content.currentView.close();
     $('<div class="main span9"></div>').appendTo($('.app'));
-    var mainView = new TripList.Views.Places({collection: places, user: user});
+    var mainView = new TripList.Views.UnvisitedPlaces({collection: places, user: user});
+    debugger;
     layout.content.show(mainView);
   });
   
   TripList.vent.on("addNewPlace", function() {
+    layout.content.currentView.close();
+    //TODO - remove these and figure out where they can go
+    $('<div class="main span9"></div>').appendTo($('.app'));
+     console.log("Add new place");
     var placeForm = new TripList.Views.NewPlace();
-    layout.main.show(placeForm);
+    layout.content.show(placeForm);
   });
 
 });
+

@@ -1,6 +1,6 @@
-TripList.Views.NewPlace = Backbone.View.extend({
-  el: '.maincol',
-  template: JST['places/newPlace'],
+TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
+  el: '.main',
+  template: 'places/newPlace',
   initialize: function() {
     _.bindAll(this, 'render', 'submitData');
     console.log("New Place View loaded");
@@ -32,9 +32,8 @@ TripList.Views.NewPlace = Backbone.View.extend({
     evt.preventDefault();
     data = null;
     form = null;
-    console.log("Triggering event");
     $(this.el).html('');
-    TripList.vent.trigger('changeToPlacesToVisit');
+    TripList.vent.trigger('showToVisitPage');
   }
 });
 
