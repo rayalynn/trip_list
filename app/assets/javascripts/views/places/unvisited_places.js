@@ -10,7 +10,6 @@ TripList.Views.UnvisitedPlaces = Backbone.Marionette.CollectionView.extend({
     console.log("Initialized being called");
   },
 
-
   render: function() {
     console.log("Calling main render function in unvisited places");
     this.showPlacesToVisit();
@@ -32,15 +31,11 @@ TripList.Views.UnvisitedPlaces = Backbone.Marionette.CollectionView.extend({
             isAnimated: true,
               columnWidth: function( containerWidth ) {
                 var num_of_boxes = (containerWidth/min_width | 0);
-
                 var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
-
                 if (containerWidth < min_width) {
                     box_width = containerWidth;
                 }
-
                 $('.main-box').width(box_width);
-
                 return box_width;
               }
         });

@@ -37,8 +37,9 @@ TripList.Views.VisitedPlaces = Backbone.Marionette.CollectionView.extend({
   },
 
   showVisitedPlaces: function() {
-    console.log("Showing complete places");
+    console.log("Showing visited places");
     $(this.el).html('');
+    debugger;
     var completedItems = this.collection.completedPlaces();
     _(completedItems).each(function(item) {
       this.appendPlace(item);

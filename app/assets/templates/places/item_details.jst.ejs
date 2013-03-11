@@ -1,1 +1,9 @@
-<h3><%= this.model.get('title') %></h3>
+<div class="item_details span7 center">
+  <h3 class="place-title"><%= this.model.get('title') %></h3>
+  <img src="
+    <%= this.model.get('photo_orig') %>
+    " alt="place" class="place" />
+
+  <h4>Notes</h4>
+  <p><%= this.model.get('notes') %></p>
+</div>
