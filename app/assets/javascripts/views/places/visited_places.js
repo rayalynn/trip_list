@@ -23,7 +23,6 @@ TripList.Views.VisitedPlaces = Backbone.Marionette.CollectionView.extend({
             isAnimated: true,
               columnWidth: function( containerWidth ) {
                 var num_of_boxes = (containerWidth/min_width | 0);
-
                 var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
 
                 if (containerWidth < min_width) {
@@ -37,9 +36,7 @@ TripList.Views.VisitedPlaces = Backbone.Marionette.CollectionView.extend({
   },
 
   showVisitedPlaces: function() {
-    console.log("Showing visited places");
     $(this.el).html('');
-    debugger;
     var completedItems = this.collection.completedPlaces();
     _(completedItems).each(function(item) {
       this.appendPlace(item);
@@ -47,13 +44,11 @@ TripList.Views.VisitedPlaces = Backbone.Marionette.CollectionView.extend({
   },
 
   appendPlace: function(item) {
-    var placeItemView = new TripList.Views.PlaceItemView({
+    var placeItemView = new TripList.Views.VisitedPlaceView({
       model: item,
     });
     var renderRetval = placeItemView.render()
     this.$el.append(renderRetval);
   },
-
-
 });
 

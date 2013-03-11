@@ -1,0 +1,13 @@
+<div class="photo-title"> 
+  <h4 class="place-title"><%= this.model.get('title') %></h4>
+  <b><%= this.model.get('location') %></b>
+</div>
+<div class="photo-box">
+  <img src="
+    <%= this.model.get('photo_thumb') %>
+    " alt="place" class="place" />
+</div>
+<div class="place-actions">
+Completed on <%= this.model.get('completionDate') %>
+</div>
+
