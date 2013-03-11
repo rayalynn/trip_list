@@ -28,12 +28,12 @@ TripList.addInitializer(function(data) {
   });
 
   TripList.vent.on("changeToPlacesToVisit", function() {
+    console.log("Change to places to visit in initializer");
     TripList.vent.trigger('showPlacesToVisit', TripList.Views.Places);
   });
   
   TripList.vent.on("addNewPlace", function() {
     console.log("Add new place triggered");
-    //layout.main.close();
     var placeForm = new TripList.Views.NewPlace();
     layout.main.show(placeForm);
   });
