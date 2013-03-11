@@ -26,14 +26,16 @@ TripList.addInitializer(function(data) {
   layout.render();
 
   //Events
-  TripList.vent.on("changeToVisitedPage", function(){
+  TripList.vent.on("showVisitedPage", function(){
+    console.log("Event catch in main showVisitedPage");
     TripList.vent.trigger('showVisitedPlaces', TripList.Views.Places);
   });
 
-  TripList.vent.on("changeToPlacesToVisit", function() {
-    var mainView = new TripList.Views.Places({collection: places, user: user});
-    layout.main.show(mainView);
-    layout.main.reset();
+  TripList.vent.on("showToVisitPage", function() {
+    console.log("In show to visit page");
+    //var mainView = new TripList.Views.Places({collection: places, user: user});
+    //layout.main.show(mainView);
+    //layout.main.reset();
   });
   
   TripList.vent.on("addNewPlace", function() {
