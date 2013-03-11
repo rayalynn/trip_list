@@ -2,10 +2,9 @@ TripList.Views.NewPlace = Backbone.View.extend({
   el: '.main',
   template: JST['places/newPlace'],
   initialize: function() {
-
     _.bindAll(this, 'render', 'submitData');
     console.log("New Place View loaded");
-    $(this.el).html('');
+    //$(this.el).html('');
 
     this.form = new Backbone.Form({
       schema: {
