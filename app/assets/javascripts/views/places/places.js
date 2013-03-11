@@ -23,14 +23,9 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
 
   render: function() {
     console.log("Calling main render function");
-    if (this.el === undefined) {
-      console.log("Creating el");
-      $('<div class="main_app"></div>').appendTo('.maincol');
-      this.el = '.main_app';
-    }
     this.showPlacesToVisit();
     this.init_masonry();
-    //return this;
+    return this;
   },
 
   init_masonry: function() {
