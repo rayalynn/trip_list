@@ -19,8 +19,9 @@ Backbone.Marionette.Renderer.render = function(template, data){
 TripList.addInitializer(function(data) {
 
   TripList.initAppLayout();
-  PlacesRouter = new TripList.Routers.Places(data);
-  Backbone.history.start();
+  PlacesRouter = new TripList.Routers.Places({
+    data: data
+  });
 
   //Events
   //TripList.vent.on("showVisitedPage", function(){
@@ -75,7 +76,6 @@ TripList.addInitializer(function(data) {
 
 });
 
-
 TripList.initAppLayout = function() {
   var view = new TripList.Views.PlacesIndex( {collection: this.collection, user: this.user} );
   var user = new TripList.Models.User(data.user);
@@ -83,3 +83,8 @@ TripList.initAppLayout = function() {
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
   layout.render();
 };
+
+TripList.on("initialize:after", function() {
+  Backbone.history.start();
+});
+
