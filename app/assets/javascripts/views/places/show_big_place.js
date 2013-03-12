@@ -1,7 +1,7 @@
-TripList.Views.DetailedItemView = Marionette.ItemView.extend({
+TripList.Views.SingleItemBigView = Marionette.ItemView.extend({
 
   model: TripList.Models.Place,
-  template: JST['places/item_details'],
+  template: JST['places/details'],
   el: '.main',
 
   render: function() {

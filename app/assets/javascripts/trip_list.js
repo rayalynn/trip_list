@@ -19,56 +19,14 @@ Backbone.Marionette.Renderer.render = function(template, data){
 TripList.addInitializer(function(data) {
 
   var layout = TripList.initAppLayout();
-  PlacesRouter = new TripList.Routers.Places({
+  TripList.PlacesRouter = new TripList.Routers.Places({
     data: data,
     layout: layout
   });
 
-  //Events
-  //TripList.vent.on("showVisitedPage", function(){
-    //layout.content.currentView.close();
-    //$('<div class="main span9"></div>').appendTo($('.app'));
-    //var updatedCollection = new TripList.Collections.Places;
-    //updatedCollection.fetch({
-      //success: function(results) {
-        //var mainView = new TripList.Views.VisitedPlaces({collection: results, user: user});
-        //layout.content.show(mainView);
-        //TripList.vent.trigger('setVisitedActive', TripList.Views.Sidebar);
-      //}
-    //});
-  //});
-
-  //TripList.vent.on("showToVisitPage", function() {
-    //console.log("Showing places to visit");
-    //layout.content.currentView.close();
-    //$('<div class="main span9"></div>').appendTo($('.app'));
-    //var updatedCollection = new TripList.Collections.Places;
-    //updatedCollection.fetch({
-      //success: function(results) {
-        //var mainView = new TripList.Views.UnvisitedPlaces({collection: results, user: user});
-        //layout.content.show(mainView);
-        //TripList.vent.trigger('setToVisitActive', TripList.Views.Sidebar);
-      //}
-    //});
-  //});
-  
-  //TripList.vent.on("showDetailedItem", function(curItem) {
-    //layout.content.currentView.close();
-    //$('<div class="main span9"></div>').appendTo($('.app'));
-    //var itemDetails = new TripList.Views.DetailedItemView({model: curItem});
-    //layout.content.show(itemDetails);
-  //});
-
-  //TripList.vent.on("showTagPage", function(tag) {
-    //console.log("Show Tag event page loaded");
-    //layout.content.currentView.close();
-    //$('<div class="main span9"></div>').appendTo($('.app'));
-    //var tagged = new TripList.Views.TaggedPlaces({collection: places, tag: tag});
-    //layout.content.show(tagged);
-  //});
-
 });
 
+//Setup page layout
 TripList.initAppLayout = function() {
   var view = new TripList.Views.PlacesIndex( {collection: this.collection, user: this.user} );
   var user = new TripList.Models.User(data.user);
