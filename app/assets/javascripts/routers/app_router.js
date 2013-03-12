@@ -1,6 +1,4 @@
 /* todo: routes should be /user/places, not /user
- *
- *
  */
 
 TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
@@ -30,6 +28,7 @@ TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
     });
   },
 
+  //Add a new place
   addNewPlace: function() {
     this.layout.content.close();
     var placeForm = new TripList.Views.NewPlace();

@@ -10,35 +10,35 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
   url: '/places',
   collection: TripList.Collections.Places, 
 
-  initialize: function() {
-    var self = this;
-
-    //Events
-    TripList.vent.on('showVisitedPlaces', function() {
-      self.showVisitedPlaces();
-    });
-  },
-
   render: function() {
-    this.showPlacesToVisit();
+    $(this.el).html('');
+    var placesType = this.getPlaceType();
+    this.showPlaces(placesType);
     this.init_masonry();
     return this;
   },
 
-  showPlacesToVisit: function() {
-    $(this.el).html('');
-    var incompleteItems = this.collection.remainingPlaces();
-    _(incompleteItems).each(function(item) {
-      this.appendPlace(item);
-    }, this);
+  //Get the places to show depending on the URL
+  getPlaceType: function() {
+    var places;
+    switch(Backbone.history.fragment) {
+      case "visited":
+        places = this.collection.visitedPlaces();
+        break;
+      default:
+        places = this.collection.placesToGo();
+    }
+    return places;
   },
   
-  //Create new view for each individual place and append to main
-  appendPlace: function(item) {
-    var placeItemView = new TripList.Views.PlaceItemView({
-      model: item,
-    });
-    this.$el.append(placeItemView.render());
+  //Create new view for each individual place and append to view
+  showPlaces: function(places) {
+    _(places).each(function(item) {
+      var placeItemView = new TripList.Views.PlaceItemView({
+        model: item,
+      });
+      this.$el.append(placeItemView.render());
+    }, this);
   },
 
   //Load up masonry to display photos Pinterest style

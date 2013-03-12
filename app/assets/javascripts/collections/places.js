@@ -7,11 +7,11 @@ TripList.Collections.Places = Backbone.Collection.extend({
     _.bindAll(this, 'matchingTags');
   },
 
-  remainingPlaces: function() {
+  placesToGo: function() {
     return this.where({ isCompleted: false });
   },
 
-  completedPlaces: function() {
+  visitedPlaces: function() {
     return this.where({ isCompleted: true });
   },
 
