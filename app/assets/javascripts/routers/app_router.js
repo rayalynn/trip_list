@@ -1,18 +1,39 @@
+/* todo: routes should be /user/places, not /user
+ *
+ *
+ */
+
 TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
 
   initialize: function(options) {
     this.collection = options.collection;
     this.user = options.user;
-    console.log("Places router called");
+    this.layout = options.layout;
   },
 
   routes: {
-    "": "loadPlaceIndex",
+    "places": "showPlaceIndex",
+    "visited": "showPlaceIndex",
     "new": "addNewPlace"
   },
 
-  loadIndex: function() {
-    console.log("Loading router:index");
+  //Show main places page.
+  showPlaceIndex: function() {
+    this.layout.content.close();
+    var updatedCollection = new TripList.Collections.Places;
+    var that = this;
+    updatedCollection.fetch({
+      success: function(results) {
+        var mainView = new TripList.Views.PlacesIndex({collection: results});
+        that.layout.content.show(mainView);
+      }
+    });
+  },
+
+  addNewPlace: function() {
+    this.layout.content.close();
+    var placeForm = new TripList.Views.NewPlace();
+    this.layout.content.show(placeForm);
   }
 
 });

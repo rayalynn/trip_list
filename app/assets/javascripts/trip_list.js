@@ -18,9 +18,10 @@ Backbone.Marionette.Renderer.render = function(template, data){
 //TripList initializer
 TripList.addInitializer(function(data) {
 
-  TripList.initAppLayout();
+  var layout = TripList.initAppLayout();
   PlacesRouter = new TripList.Routers.Places({
-    data: data
+    data: data,
+    layout: layout
   });
 
   //Events
@@ -51,14 +52,6 @@ TripList.addInitializer(function(data) {
     //});
   //});
   
-  //TripList.vent.on("addNewPlace", function() {
-    //layout.content.currentView.close();
-    //$('<div class="main span9"></div>').appendTo($('.app'));
-     //console.log("Add new place");
-    //var placeForm = new TripList.Views.NewPlace();
-    //layout.content.show(placeForm);
-  //});
-
   //TripList.vent.on("showDetailedItem", function(curItem) {
     //layout.content.currentView.close();
     //$('<div class="main span9"></div>').appendTo($('.app'));
@@ -82,9 +75,10 @@ TripList.initAppLayout = function() {
   var places = new TripList.Collections.Places(data.places);
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
   layout.render();
+  return layout;
 };
 
+//Listeners
 TripList.on("initialize:after", function() {
   Backbone.history.start();
 });
-
