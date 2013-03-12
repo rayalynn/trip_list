@@ -10,7 +10,6 @@ TripList.Views.Header = Backbone.Marionette.ItemView.extend({
   },
 
   logoutUser: function() {
-    console.log("Logging out user");
   },
 
   redirectHome: function() {
