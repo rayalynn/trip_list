@@ -1,4 +1,4 @@
-TripList.Routers.Places = Backbone.Router.extend({
+TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
   initialize: function(options) {
     this.collection = options.collection;
     this.user = options.user;
@@ -6,13 +6,16 @@ TripList.Routers.Places = Backbone.Router.extend({
   },
 
   routes: {
-    "": "index"
+    "": "index",
+    "visited": "visited"
   },
 
   index: function() {
-    console.log("Creating new view from router");
-    var view = new TripList.Views.PlacesIndex( {collection: this.collection, user: this.user} );
-  }
+    console.log("in index");
+  },
 
+  visited: function() {
+    console.log("Show visited places");
+  }
 });
 

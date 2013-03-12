@@ -13,6 +13,7 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
   initialize: function() {
     var self = this;
 
+    //Events
     TripList.vent.on('showVisitedPlaces', function() {
       self.showVisitedPlaces();
     });
