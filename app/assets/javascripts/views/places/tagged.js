@@ -7,18 +7,6 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
   collection: TripList.Collections.Places, 
 
   initialize: function() {
-    var self = this;
-
-    _.bindAll(this, 'render', 'appendPlace', 'init_masonry',
-             'showVisitedPlaces', 'appendNewItem');
-
-    TripList.vent.on('showVisitedPlaces', function() {
-      console.log("in show visited places on main");
-      self.showVisitedPlaces();
-    });
-
-    this.collection.bind('add', this.appendNewItem);
-    this.collection.bind('remove', this.render);
   },
 
   render: function() {
@@ -60,26 +48,6 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
     });
     var renderRetval = placeItemView.render()
     this.$el.append(renderRetval);
-  },
-
-  showPlacesToVisit: function() {
-    $(this.el).html('');
-    var incompleteItems = this.collection.remainingPlaces();
-    _(incompleteItems).each(function(item) {
-      //$('<div class="main-box"></div>').appendTo($('.main_app'));
-      this.appendPlace(item);
-    }, this);
-
-  },
-
-  showVisitedPlaces: function() {
-    console.log("Showing complete places");
-    $(this.el).html('');
-    var completedItems = this.collection.completedPlaces();
-    _(completedItems).each(function(item) {
-      //$('<div class="main-box"></div>').appendTo($('.main_app'));
-      this.appendPlace(item);
-    }, this);
   },
 
   appendNewItem: function() {

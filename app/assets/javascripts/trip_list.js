@@ -70,7 +70,10 @@ TripList.addInitializer(function(data) {
 
   TripList.vent.on("showTagPage", function(tag) {
     console.log("Show Tag event page loaded");
-    debugger;
+    layout.content.currentView.close();
+    $('<div class="main span9"></div>').appendTo($('.app'));
+    var tagged = places.matchingTags(tag);
+    layout.content.show(tagPage);
   });
 
 });
