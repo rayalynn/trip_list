@@ -1,4 +1,4 @@
-TripList.Views.PlaceItemView = Marionette.ItemView.extend({
+TripList.Views.SinglePlaceView = Marionette.ItemView.extend({
 
   model: TripList.Models.Place,
   template: JST['places/place'],

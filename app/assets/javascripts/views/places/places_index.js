@@ -34,10 +34,10 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
   //Create new view for each individual place and append to view
   showPlaces: function(places) {
     _(places).each(function(item) {
-      var placeItemView = new TripList.Views.PlaceItemView({
+      var singlePlace = new TripList.Views.SinglePlaceView({
         model: item,
       });
-      this.$el.append(placeItemView.render());
+      this.$el.append(singlePlace.render());
     }, this);
   },
 
