@@ -21,7 +21,6 @@ TripList.addInitializer(function(data) {
   //load initial data
   var user = new TripList.Models.User(data.user);
   var places = new TripList.Collections.Places(data.places);
-
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
   layout.render();
 

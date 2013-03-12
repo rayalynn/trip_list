@@ -23,7 +23,9 @@ require 'nokogiri'
 
 class Place < ActiveRecord::Base
   attr_accessible :headline, :notes, :photo, :title,
-                  :isCompleted, :completionDate, :location
+                  :isCompleted, :completionDate, :location,
+                  :tag_list
+  acts_as_taggable
   belongs_to :user
   after_create :download_default_image
 

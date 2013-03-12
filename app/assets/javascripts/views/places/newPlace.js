@@ -9,6 +9,7 @@ TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
         title: 'Text',
         location: 'Text',
         notes:    'TextArea',
+        tag_list:     'Text'
       }
     });
   },
@@ -33,6 +34,7 @@ TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
     data = null;
     form = null;
     $(this.el).html('');
+    debugger;
     TripList.vent.trigger('showToVisitPage');
   }
 });

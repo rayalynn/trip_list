@@ -8,5 +8,14 @@
     " alt="place" class="place" />
 </div>
 <div class="place-actions">
-Completed on <%= this.model.get('completionDate') %>
+  Completed on <%= this.model.get('completionDate') %>
+  <div class="tag-info">
+    <h4>Tags</h4>
+   <% var tags = this.model.get('tag_list') %>
+   <% for(i=0; i < tags.length; i++) { %>
+     <a href="#">
+       <%= tags[i] %>
+     </a>
+   <% } %>
+  </div>
 </div>

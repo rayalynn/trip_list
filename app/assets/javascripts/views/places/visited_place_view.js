@@ -9,7 +9,7 @@ TripList.Views.VisitedPlaceView = Marionette.ItemView.extend({
     'click .photo-title': 'getDetails'
   },
 
-  initialize: function() {
+  init_masonryialize: function() {
     _.bindAll(this, 'render', 'getDetails');
     this.model.on('change', this.render, this);
   },
