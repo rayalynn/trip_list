@@ -34,6 +34,7 @@ TripList.addInitializer(function(data) {
       success: function(results) {
         var mainView = new TripList.Views.VisitedPlaces({collection: results, user: user});
         layout.content.show(mainView);
+        TripList.vent.trigger('setVisitedActive', TripList.Views.Sidebar);
       }
     });
   });
@@ -47,6 +48,7 @@ TripList.addInitializer(function(data) {
       success: function(results) {
         var mainView = new TripList.Views.UnvisitedPlaces({collection: results, user: user});
         layout.content.show(mainView);
+        TripList.vent.trigger('setToVisitActive', TripList.Views.Sidebar);
       }
     });
   });
