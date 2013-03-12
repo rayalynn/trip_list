@@ -12,7 +12,7 @@ body {
 
 .navbar .brand {
   font-family: 'Gabriela', serif;
-  color: black;
+  color: white; 
 }
 
 .navbar li a {
@@ -53,7 +53,7 @@ body {
 /* From http://www.aaronlumsden.com/articles/recreate-the-pinterest-style-block-layout-using-jquery-css3/*/
 .main-box {
   width: 200px;
-  padding: 15px 15px 0;
+  padding: 12px 12px 0;
 	font-size: 11px;
 	background-color: white;
 	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
@@ -61,6 +61,7 @@ body {
 	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
   margin-right:10px;
   margin-bottom:10px;
+  /*border: 1px solid black;*/
 }
 
 .photo-title {
@@ -69,7 +70,7 @@ body {
 }
 
 .place-actions {
-  margin: 0 -15px;
+  margin: 0 -12px;
   margin-top: 10px;
   padding: 10px 15px;
   background-color: #C0C0C0;
