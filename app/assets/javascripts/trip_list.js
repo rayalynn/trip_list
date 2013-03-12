@@ -27,11 +27,16 @@ TripList.addInitializer(function(data) {
 
   //Events
   TripList.vent.on("showVisitedPage", function(){
-    console.log("Event catch in main showVisitedPage");
     layout.content.currentView.close();
     $('<div class="main span9"></div>').appendTo($('.app'));
-    var mainView = new TripList.Views.VisitedPlaces({collection: places, user: user});
-    layout.content.show(mainView);
+    var updatedCollection = new TripList.Collections.Places;
+    updatedCollection.fetch({
+      success: function(results) {
+        var mainView = new TripList.Views.VisitedPlaces({collection: results, user: user});
+        layout.content.show(mainView);
+        TripList.vent.trigger('setVisitedActive', TripList.Views.Sidebar);
+      }
+    });
   });
 
   TripList.vent.on("showToVisitPage", function() {
@@ -43,6 +48,7 @@ TripList.addInitializer(function(data) {
       success: function(results) {
         var mainView = new TripList.Views.UnvisitedPlaces({collection: results, user: user});
         layout.content.show(mainView);
+        TripList.vent.trigger('setToVisitActive', TripList.Views.Sidebar);
       }
     });
   });
@@ -54,6 +60,13 @@ TripList.addInitializer(function(data) {
      console.log("Add new place");
     var placeForm = new TripList.Views.NewPlace();
     layout.content.show(placeForm);
+  });
+
+  TripList.vent.on("showDetailedItem", function(curItem) {
+    layout.content.currentView.close();
+    $('<div class="main span9"></div>').appendTo($('.app'));
+    var itemDetails = new TripList.Views.DetailedItemView({model: curItem});
+    layout.content.show(itemDetails);
   });
 
 });

@@ -2,16 +2,20 @@
 #
 # Table name: places
 #
-#  id             :integer          not null, primary key
-#  title          :text
-#  headline       :text
-#  notes          :text
-#  photo_id       :integer
-#  user_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  isCompleted    :boolean
-#  completionDate :datetime
+#  id                 :integer          not null, primary key
+#  title              :text
+#  headline           :text
+#  notes              :text
+#  user_id            :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  isCompleted        :boolean          default(FALSE)
+#  completionDate     :datetime
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  location           :text
 #
 
 require 'spec_helper'

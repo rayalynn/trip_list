@@ -6,9 +6,9 @@ TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
     console.log("New Place View loaded");
     this.form = new Backbone.Form({
       schema: {
-        title:    'Text',
-        headline: 'Text',
-        notes:    'Text',
+        title: 'Text',
+        location: 'Text',
+        notes:    'TextArea',
       }
     });
   },

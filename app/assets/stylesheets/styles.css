@@ -1,3 +1,6 @@
+body {
+  background: url('fabric_of_squares_gray.png'); 
+}
 .admin-btns {
   margin-bottom: 10px;
 }
@@ -16,28 +19,33 @@
   color: black;
 }
 
-.navbar-inner {
-  color: black;
-  background: rgb(238,238,238); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(238,238,238,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
- }
+/*.navbar-inner {*/
+  /*color: black;*/
+  /*background: rgb(238,238,238); [> Old browsers <]*/
+  /*background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 100%); [> FF3.6+ <]*/
+  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(238,238,238,1))); [> Chrome,Safari4+ <]*/
+  /*background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); [> Chrome10+,Safari5.1+ <]*/
+  /*background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); [> Opera 11.10+ <]*/
+  /*background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); [> IE10+ <]*/
+  /*background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); [> W3C <]*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); [> IE6-9 <]*/
+ /*}*/
 
  .center {
   text-align: center;
  }
 
 .profile-box {
+  background-color: white;
   height: 160px;
   border: 1px solid black;
   border-bottom: 1px solid black;
   padding: 3px;
   text-align: center;
+}
+
+.sidebar-nav {
+  background-color: white;
 }
 
 /* Pins */ 
@@ -68,18 +76,11 @@
   color: black;
 }
 
-/*.photo-box img {*/
-  /*margin: 0 -15px;*/
-  /*padding: 10px 15px;*/
-  /*background-color: #F2F0F0;*/
-  /*color: #8C7E7E;*/
-/*}*/
+/* Single place page */
+.item_details {
 
-/*.tag-box {*/
-  /*border-top: 1px solid black;*/
-  /*position: absolute; */
-  /*height: 45px;*/
-  /*bottom: 0;*/
-  /*width: 100%; */
-/*}*/
+}
 
+.place-title {
+  text-decoration: underline;
+}
