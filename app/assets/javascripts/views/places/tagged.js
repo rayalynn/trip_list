@@ -1,16 +1,19 @@
-TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
+TripList.Views.TaggedPlaces = Backbone.Marionette.CollectionView.extend({
   itemView: TripList.Views.PlaceItemView, 
 
-  template: JST['places/tagged'],
+  template: JST['places/index'],
   el: '.main',
   url: '/places',
   collection: TripList.Collections.Places, 
 
-  initialize: function() {
+  initialize: function(tag) {
+    var self = this;
+    this.tag = tag.tag;
+    console.log("In tagged places view");
   },
 
   render: function() {
-    console.log("Calling main render function");
+    console.log("Calling Tagged ");
     this.showPlacesToVisit();
     this.init_masonry();
     return this;
@@ -48,6 +51,17 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
     });
     var renderRetval = placeItemView.render()
     this.$el.append(renderRetval);
+  },
+
+  showPlacesToVisit: function() {
+    $(this.el).html('');
+    var incompleteItems = this.collection.matchingTags(this.tag);
+    console.log("show----");
+    debugger;
+    _(incompleteItems).each(function(item) {
+      this.appendPlace(item);
+    }, this);
+
   },
 
   appendNewItem: function() {

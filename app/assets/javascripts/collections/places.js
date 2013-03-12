@@ -3,6 +3,10 @@ TripList.Collections.Places = Backbone.Collection.extend({
   model: TripList.Models.Place,
   url: '/places',
 
+  initialize: function() {
+    _.bindAll(this, 'matchingTags');
+  },
+
   remainingPlaces: function() {
     return this.where({ isCompleted: false });
   },
@@ -12,18 +16,15 @@ TripList.Collections.Places = Backbone.Collection.extend({
   },
 
   matchingTags: function(tag) {
-    for (item in this.models) {
-      if (_.contains(this.models[item].get('tag_list'), tag)) {
-        console.log(this.models[item].get('title'));
-        console.log("Item contains tag");
-
+    var results = new TripList.Collections.Places; 
+    this.each(function(someTag) {
+      var tag_list = someTag.get('tag_list');
+      if (_.contains(tag_list, tag)) {
+        results.add(someTag);
+        console.log("Found");
       }
-      else {
-        console.log("No match");
-      }
-    }
-    debugger;
+    });
+    return results;
   }
-
 
 });

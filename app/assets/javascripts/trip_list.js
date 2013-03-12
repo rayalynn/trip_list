@@ -72,8 +72,8 @@ TripList.addInitializer(function(data) {
     console.log("Show Tag event page loaded");
     layout.content.currentView.close();
     $('<div class="main span9"></div>').appendTo($('.app'));
-    var tagged = places.matchingTags(tag);
-    layout.content.show(tagPage);
+    var tagged = new TripList.Views.TaggedPlaces({collection: places, tag: tag});
+    layout.content.show(tagged);
   });
 
 });

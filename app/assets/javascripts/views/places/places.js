@@ -65,8 +65,9 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
   showPlacesToVisit: function() {
     $(this.el).html('');
     var incompleteItems = this.collection.remainingPlaces();
+    console.log("show----");
+    debugger;
     _(incompleteItems).each(function(item) {
-      //$('<div class="main-box"></div>').appendTo($('.main_app'));
       this.appendPlace(item);
     }, this);
 
@@ -76,8 +77,8 @@ TripList.Views.Places = Backbone.Marionette.CollectionView.extend({
     console.log("Showing complete places");
     $(this.el).html('');
     var completedItems = this.collection.completedPlaces();
+    debugger;
     _(completedItems).each(function(item) {
-      //$('<div class="main-box"></div>').appendTo($('.main_app'));
       this.appendPlace(item);
     }, this);
   },
