@@ -7,7 +7,8 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
   events: {
     'change input': 'update',
     'click .photo-box': 'getDetails',
-    'click .photo-title': 'getDetails'
+    'click .photo-title': 'getDetails',
+    'click .tag':   'showTagPage'
   },
 
   initialize: function() {
@@ -37,6 +38,11 @@ TripList.Views.PlaceItemView = Marionette.ItemView.extend({
 
   getDetails: function() {
     TripList.vent.trigger('showDetailedItem', this.model);
+  },
+
+  showTagPage: function(evt) {
+    var clickedTag = evt.currentTarget.innerText;
+    TripList.vent.trigger('showTagPage', clickedTag);
   }
 
 });

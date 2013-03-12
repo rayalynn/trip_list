@@ -68,5 +68,10 @@ TripList.addInitializer(function(data) {
     layout.content.show(itemDetails);
   });
 
+  TripList.vent.on("showTagPage", function(tag) {
+    console.log("Show Tag event page loaded");
+    debugger;
+  });
+
 });
 

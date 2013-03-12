@@ -19,6 +19,11 @@ body {
   color: black;
 }
 
+.nav-header {
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}
 /*.navbar-inner {*/
   /*color: black;*/
   /*background: rgb(238,238,238); [> Old browsers <]*/
