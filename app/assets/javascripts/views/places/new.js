@@ -19,7 +19,8 @@ TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
   render: function() {
     this.form.render();
     $(this.el).append(this.form.el);
-    $('form').append('<input type="submit" class="submit" value="submit"/>');
+    $(this.el).append('<input type="submit" class="submit" value="submit"/>');
+
 
   },
 
