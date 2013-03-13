@@ -5,8 +5,7 @@
 TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
 
   itemView: TripList.Views.PlaceItemView, 
-  template: JST['places/index'],
-  el: '.main',
+  itemViewContainer: 'main-box',
   url: '/places',
   collection: TripList.Collections.Places, 
 

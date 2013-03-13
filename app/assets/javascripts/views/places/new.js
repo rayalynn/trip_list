@@ -1,5 +1,4 @@
 TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
-  el: '.main',
   template: 'places/newPlace',
   initialize: function() {
     _.bindAll(this, 'render', 'submitData');

@@ -33,9 +33,7 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
   },
 
   getDetails: function() {
-    console.log("Navigate to /id");
-    TripList.PlacesRouter.navigate('/places/' + this.model.get('id'));
-    TripList.vent.trigger('showDetailedItem', this.model);
+    TripList.PlacesRouter.navigate('places/' + this.model.get('id'), {trigger: true});
   }
 
 });

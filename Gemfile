@@ -57,7 +57,7 @@ gem "friendly_id", "~> 4.0.9"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "rabl", "~> 0.8.0"
 gem "acts-as-taggable-on", "~> 2.3.3"
-
+gem "ejs", "~> 1.1.1"
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

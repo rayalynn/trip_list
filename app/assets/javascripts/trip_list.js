@@ -32,7 +32,15 @@ TripList.initAppLayout = function() {
   var user = new TripList.Models.User(data.user);
   var places = new TripList.Collections.Places(data.places);
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
-  layout.render();
+  $('.container-fluid').prepend(layout.render().el);
+
+  var headerView = new TripList.Views.Header();
+  layout.header.show(headerView);
+  var sidebarView = new TripList.Views.Sidebar({model: user});
+  layout.sidebar.show(sidebarView);
+  var contentView = new TripList.Views.PlacesIndex({collection: places, user: user});
+  layout.content.show(contentView); 
+
   return layout;
 };
 
