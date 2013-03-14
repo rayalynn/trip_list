@@ -7,7 +7,8 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
   events: {
     'change input': 'update',
     'click .photo-box': 'getDetails',
-    'click .photo-title': 'getDetails'
+    'click .photo-title': 'getDetails',
+    'click .tag': 'callTagPage'
   },
 
   initialize: function() {
@@ -34,6 +35,12 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
 
   getDetails: function() {
     TripList.PlacesRouter.navigate('places/' + this.model.get('id'), {trigger: true});
+  },
+
+  callTagPage: function(evt) {
+    console.log("Call tag page");
+    var selectedTag = evt.currentTarget.innerText;
+    TripList.vent.trigger('showTagPage', selectedTag);
   }
 
 });

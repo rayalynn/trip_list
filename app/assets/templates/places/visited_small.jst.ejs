@@ -1,0 +1,24 @@
+<div class="photo-title"> 
+  <h4 class="place-title"><%= this.model.get('title') %></h4>
+  <b><%= this.model.get('location') %></b>
+</div>
+<div class="photo-box">
+  <img src="
+    <%= this.model.get('photo_thumb') %>
+    " alt="place" class="place" />
+</div>
+<div class="place-actions">
+  <label>
+    <input type="checkbox" name="checkbox" class="place-checkbox" />
+COMPLETED
+  </label>
+<div class="tag-box">
+<i class="icon-tag"></i>
+<% var tags = this.model.get('tag_list') %>
+<% for(i=0; i < tags.length; i++) { %>
+  <a href="#" class="tag">
+  <%= tags[i] %>
+  </a>
+<% } %>
+</div>
+</div>
