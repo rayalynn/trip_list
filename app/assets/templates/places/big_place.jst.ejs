@@ -6,7 +6,10 @@
 
   <div class="big-notes">
     <h4>Notes</h4>
-    <p><%= this.model.get('notes') %></p>
+    <% if (this.model.get('notes') === "") { %>
+          No notes entered.
+    <% } %>
+    <%= this.model.get('notes') %>
   </div>
 
   <div class="tag-info">
