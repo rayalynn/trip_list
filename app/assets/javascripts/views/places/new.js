@@ -1,14 +1,14 @@
 TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
-  template: 'places/newPlace',
+  template: JST['places/new'],
   initialize: function() {
     _.bindAll(this, 'render', 'submitData');
     console.log("New Place View loaded");
     this.form = new Backbone.Form({
       schema: {
-        title: 'Text',
+        title:    'Text',
         location: 'Text',
         notes:    'TextArea',
-        tag_list:     'Text'
+        tag_list:  { type: 'Text', title: "Tags (separate with commas)"}
       }
     });
   },
@@ -17,9 +17,11 @@ TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
   },
 
   render: function() {
+    this.$el.append(this.template);
     this.form.render();
     $(this.el).append(this.form.el);
     $(this.el).append('<input type="submit" class="submit" value="submit"/>');
+    return this;
 
 
   },
