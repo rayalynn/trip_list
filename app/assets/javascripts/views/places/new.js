@@ -34,8 +34,7 @@ TripList.Views.NewPlace = Backbone.Marionette.ItemView.extend({
     data = null;
     form = null;
     $(this.el).html('');
-    debugger;
-    TripList.vent.trigger('showToVisitPage');
+    TripList.PlacesRouter.navigate("places", {trigger: true});
   }
 });
 

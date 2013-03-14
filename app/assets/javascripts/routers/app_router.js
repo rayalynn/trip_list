@@ -1,7 +1,7 @@
 /* todo: routes should be /user/places, not /user
  */
 
-TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
+TripList.Routers.Places = Backbone.Router.extend({
 
   initialize: function(options) {
     this.collection = options.collection;
@@ -10,15 +10,18 @@ TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
   },
 
   routes: {
+    "tagged/:tagname": "showTaggedPage",
     "places": "showPlaceIndex",
     "visited": "showPlaceIndex",
     "new": "addNewPlace",
-    "places/:id": "showBigPlace",
-    "unvisited/tagged": "showTaggedUnvisited"
+    "places/:id" : "showBigPlace",
+    "/": "showPlaceIndex",
+    '': "showPlaceIndex"
   },
 
   //Show main places page.
   showPlaceIndex: function() {
+    console.log("Show place index called");
     this.layout.content.close();
     var updatedCollection = new TripList.Collections.Places;
     var that = this;
@@ -40,17 +43,20 @@ TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
   //TODO - implement on 
   //http://lostechies.com/derickbailey/2011/08/28/dont-execute-a-backbone-js-route-handler-from-your-code/
   showBigPlace: function(id) {
-    console.log("Show big place view");
-    //var place = this.place.get(id);
-    //debugger;
-    //this.layout.content.close();
-    //var mainView = new TripList.Views.SingleItemBigView({model: model});
-    //that.layout.content.show(mainView);
-    //debugger;
+    var place = new TripList.Models.Place;
+    var that = this;
+    place.fetch({
+      url: '/places/' + id,
+      success: function(result) {
+        var mainView = new TripList.Views.SingleItemBigView({ model: result });
+        that.layout.content.show(mainView);
+      }
+    });
   },
 
-  showTaggedUnvisited: function() {
-
+  showTaggedPage: function(tag) {
+    debugger;
+    console.log("Show tagged page called");
   }
 
 });

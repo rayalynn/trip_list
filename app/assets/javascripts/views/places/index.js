@@ -10,11 +10,6 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
   collection: TripList.Collections.Places, 
 
   initialize: function() {
-    TripList.vent.on('showTagPage', this.showTagPage);
-  },
-
-  showTagPage: function(tag) {
-    console.log("Show tag page in PlacesIndex loaded");
   },
 
   render: function() {

@@ -23,4 +23,8 @@ class PlacesController < ApplicationController
     respond_with(@places = current_user.places)
   end
 
+  def show
+    @place = current_user.places.find(params[:id])
+  end
+
 end

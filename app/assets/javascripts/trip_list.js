@@ -46,5 +46,6 @@ TripList.initAppLayout = function() {
 
 //Listeners
 TripList.on("initialize:after", function() {
-  Backbone.history.start();
+  Backbone.history.start({
+  });
 });

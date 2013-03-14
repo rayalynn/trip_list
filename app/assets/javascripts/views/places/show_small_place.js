@@ -3,7 +3,6 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
   model: TripList.Models.Place,
   template: JST['places/small_place'],
   className: 'main-box',
-
   events: {
     'change input': 'update',
     'click .photo-box': 'getDetails',
@@ -12,7 +11,7 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
   },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'removeFromScreen', 'getDetails');
+    _.bindAll(this, 'render', 'removeFromScreen', 'getDetails', 'callTagPage');
   },
 
   render: function() {
@@ -34,13 +33,15 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
   },
 
   getDetails: function() {
-    TripList.PlacesRouter.navigate('places/' + this.model.get('id'), {trigger: true});
+    TripList.PlacesRouter.navigate('places/' + this.model.get('id'), { trigger: true });
   },
 
   callTagPage: function(evt) {
-    console.log("Call tag page");
     var selectedTag = evt.currentTarget.innerText;
-    TripList.vent.trigger('showTagPage', selectedTag);
+    var route = "tagged/" + selectedTag;
+    //var route = "tagged/5";
+    evt.stopPropagation();
+    TripList.PlacesRouter.navigate(route, { trigger: true });
   }
 
 });
