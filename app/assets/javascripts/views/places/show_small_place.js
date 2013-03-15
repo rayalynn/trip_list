@@ -39,9 +39,7 @@ TripList.Views.SmallPlaceView = Marionette.ItemView.extend({
   callTagPage: function(evt) {
     evt.stopPropagation();
     var selectedTag = evt.currentTarget.innerText;
-    //TripList.vent.trigger('showTagPage', selectedTag);
     var route = "tagged/" + selectedTag;
-
     TripList.PlacesRouter.navigate(route, { trigger: true });
   }
 
