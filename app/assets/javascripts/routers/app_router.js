@@ -1,11 +1,11 @@
 /* todo: routes should be /user/places, not /user
  */
 
-TripList.Routers.Places = Backbone.Router.extend({
+TripList.Routers.Places = Backbone.Marionette.AppRouter.extend({
 
   initialize: function(options) {
-    this.collection = options.collection;
-    this.user = options.user;
+    this.collection = options.data.places;
+    this.user = options.data.user;
     this.layout = options.layout;
   },
 
@@ -21,7 +21,6 @@ TripList.Routers.Places = Backbone.Router.extend({
 
   //Show main places page.
   showPlaceIndex: function() {
-    console.log("Show place index called");
     this.layout.content.close();
     var updatedCollection = new TripList.Collections.Places;
     var that = this;
@@ -31,6 +30,18 @@ TripList.Routers.Places = Backbone.Router.extend({
         that.layout.content.show(mainView);
       }
     });
+    //var updatedCollection = new TripList.Collections.Places(this.collection);
+    //updatedCollection.update(this.collection);
+    //var mainView = new TripList.Views.PlacesIndex({collection: updatedCollection});
+    //var mainView = new TripList.Views.PlacesIndex({collection: this.collection});
+    //this.layout.content.show(mainView);
+    //updatedCollection.update({
+      //success: function(results) {
+        //debugger;
+        //var mainView = new TripList.Views.PlacesIndex({collection: results});
+        //that.layout.content.show(mainView);
+      //}
+    //});
   },
 
   //Add a new place

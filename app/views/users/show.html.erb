@@ -2,10 +2,10 @@
 <script type="text/json" class="userdata">
   {
     "user":   <%= render(template: "users/_user.json.rabl") %>,
-    "places": <%= render(template: "users/_places.json.rabl") %>
+    "places": <%= render(template: "users/_places.json.rabl") %>,
+    "tags": <%= current_user.places.tag_counts.to_json %>
   }
 </script>
-
 
 <script type="text/javascript">
   var div = $('<div></div>');

@@ -8,14 +8,22 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
   itemViewContainer: 'main-box',
   collection: TripList.Collections.Places, 
 
-  initialize: function() {
-    var that = this;
+  initialize: function(data) {
+    //this.collection = new TripList.Collections.Places(data.collection);
+    //debugger;
+    //this.collection.update(this.collection.models, function() {
+      //success: function(result) {
+        //console.log("Collection updated.");
+        //debugger;
+      //} 
+    //});
   },
   
   add: function() {
     console.log("ADD called on collection");
   },
   render: function() {
+    debugger;
     $(this.el).html('');
     var placesType = this.getPlaceType();
     this.showPlaces(placesType);

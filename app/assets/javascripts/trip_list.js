@@ -17,8 +17,7 @@ Backbone.Marionette.Renderer.render = function(template, data){
 
 //TripList initializer
 TripList.addInitializer(function(data) {
-
-  var layout = TripList.initAppLayout();
+  var layout = TripList.initAppLayout(data);
   TripList.PlacesRouter = new TripList.Routers.Places({
     data: data,
     layout: layout
@@ -27,19 +26,18 @@ TripList.addInitializer(function(data) {
 });
 
 //Setup page layout
-TripList.initAppLayout = function() {
-  var view = new TripList.Views.PlacesIndex( {collection: this.collection, user: this.user} );
+TripList.initAppLayout = function(data) {
   var user = new TripList.Models.User(data.user);
   var places = new TripList.Collections.Places(data.places);
   var layout = new TripList.Layouts.AppLayout({model: user, collections: places});
+  var tags = data.tags;
   $('.container-fluid').prepend(layout.render().el);
 
   var headerView = new TripList.Views.Header();
   layout.header.show(headerView);
-  var sidebarView = new TripList.Views.Sidebar({model: user});
+  debugger;
+  var sidebarView = new TripList.Views.Sidebar({model: user, tags: tags});
   layout.sidebar.show(sidebarView);
-  var contentView = new TripList.Views.PlacesIndex({collection: places, user: user});
-  layout.content.show(contentView); 
 
   return layout;
 };
