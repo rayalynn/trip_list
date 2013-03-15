@@ -90,3 +90,8 @@ body {
 .place-title {
   text-decoration: underline;
 }
+
+.tag {
+  text-decoration: underline;
+  color: blue;
+}

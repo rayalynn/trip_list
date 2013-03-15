@@ -6,12 +6,15 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
 
   itemView: TripList.Views.PlaceItemView, 
   itemViewContainer: 'main-box',
-  url: '/places',
   collection: TripList.Collections.Places, 
 
   initialize: function() {
+    var that = this;
   },
-
+  
+  add: function() {
+    console.log("ADD called on collection");
+  },
   render: function() {
     $(this.el).html('');
     var placesType = this.getPlaceType();
@@ -27,8 +30,15 @@ TripList.Views.PlacesIndex = Backbone.Marionette.CollectionView.extend({
       case "visited":
         places = this.collection.visitedPlaces();
         break;
-      default:
+      case "":
+      case "/":
+      case "places":
+      case "unvisited":
+      case undefined:
         places = this.collection.placesToGo();
+        break;
+      default:
+        places = this.collection.matchingTags(Backbone.history.fragment);
     }
     return places;
   },

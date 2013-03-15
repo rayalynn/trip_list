@@ -10,7 +10,7 @@ TripList.Routers.Places = Backbone.Router.extend({
   },
 
   routes: {
-    "tagged/:tagname": "showTaggedPage",
+    "tagged/:tagname": "showPlaceIndex",
     "places": "showPlaceIndex",
     "visited": "showPlaceIndex",
     "new": "addNewPlace",
@@ -53,10 +53,5 @@ TripList.Routers.Places = Backbone.Router.extend({
       }
     });
   },
-
-  showTaggedPage: function(tag) {
-    debugger;
-    console.log("Show tagged page called");
-  }
 
 });

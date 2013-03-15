@@ -15,12 +15,13 @@ TripList.Collections.Places = Backbone.Collection.extend({
     return this.where({ isCompleted: true });
   },
 
-  matchingTags: function(tag) {
-    var results = new TripList.Collections.Places; 
+  matchingTags: function(tagHash) {
+    var tag = tagHash.replace("tagged/","");
+    var results = [];
     this.each(function(someTag) {
       var tag_list = someTag.get('tag_list');
       if (_.contains(tag_list, tag)) {
-        results.add(someTag);
+        results.push(someTag);
         console.log("Found");
       }
     });
