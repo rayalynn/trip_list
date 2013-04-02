@@ -36,7 +36,7 @@ group :test do
   gem "webmock", "~> 1.9.3"
   gem "shoulda-matchers", "~> 1.4.2"
   gem "factory_girl_rails", "~> 4.2.1"
-  gem "capybara", "~> 2.0.2"
+  gem "capybara", "~> 2.0.3"
   gem "database_cleaner", "~> 0.9.1"
 end
 

@@ -36,7 +36,7 @@ describe "User Pages", :js => true do
 
     it "should be accessible even if the username is capitalized" do
       visit '/' + user.username.upcase
-      page.should have_selector('h5', :text => user.first_name)
+      it { should have_selector('h5', :text => user.first_name) }
     end
 
     it "should have an avatar if no picture is uploaded" do
