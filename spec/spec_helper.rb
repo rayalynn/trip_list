@@ -12,6 +12,10 @@ require 'database_cleaner'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+#Spec::Runner.configure do |config|
+  #config.include Paperclip::Shoulda::Matchers
+#end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

@@ -35,7 +35,6 @@ TripList.initAppLayout = function(data) {
 
   var headerView = new TripList.Views.Header();
   layout.header.show(headerView);
-  debugger;
   var sidebarView = new TripList.Views.Sidebar({model: user, tags: tags});
   layout.sidebar.show(sidebarView);
 
