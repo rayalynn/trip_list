@@ -2,6 +2,9 @@ Trip List is a photographical TODO list to keep track of the places you want
 to visit in your life. The app was built using Rails, Backbone, Marionette,
 and Masonry.
 
+A demo is available [here](http://triplist.heroku.com).
+**username/password**: demo@testing.com/demodemo
+
 **Version .01** - Alpha
 
 ##Current functionality:
@@ -38,8 +41,3 @@ variables with your own credentials:
      AWS_BUCKET
      AWS_ACCESS_KEY_ID
      AWS_SECRET_ACCESS_KEY
-
-##Demo
-A demo is available [here](http://triplist.heroku.com).
-
-**username/password**: demo@testing.com/demodemo
