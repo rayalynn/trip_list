@@ -27,7 +27,8 @@ describe Place do
             notes: "Wikipedia says Barcelona is the capital of Catalonia
               and the second largest city in Spain, after Madrid, with a
               population of 1,621,537 within its administrative limits on
-              a land area of 101.4 km"
+              a land area of 101.4 km",
+            location: "Barcelona, Spain"
            )}
 
   subject { @place }
@@ -38,7 +39,6 @@ describe Place do
   it { should respond_to(:isCompleted) }
   it { should respond_to(:completionDate) }
   it { should belong_to(:user) }
-  it { should have_many(:photos) }
 
   describe "when title is blank" do
     before { @place.title = "" }
@@ -73,21 +73,6 @@ describe Place do
   describe "user ID can't be empty" do
     before { @place.user_id = nil }
     it { should_not be_valid }
-  end
- 
-  describe "photos association" do
-    before do
-      @place.save
-      @photo = @place.photos.create(isMainPhoto: false)
-    end
-
-    it "should destroy associated photos when destroyed" do
-      @photos = @place.photos.dup
-      @place.destroy
-      @photos.each do |photo|
-        Photo.find_by_id(photo.id).should be_nil
-      end
-    end
   end
 
   describe "completed task" do

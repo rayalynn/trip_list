@@ -21,5 +21,6 @@ FactoryGirl.define do
   factory :place do
     title "Visit the Statue in Italy"
     headline "Try and climb to the top"
+    location "Milan, Italy"
   end
 end
