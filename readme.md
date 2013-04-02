@@ -3,7 +3,7 @@ to visit in your life. The app was built using Rails, Backbone, Marionette,
 and Masonry.
 
 A demo is available [here](http://triplist.heroku.com).
-**username/password**: demo@testing.com/demodemo
+username/password: demo@testing.com/demodemo
 
 **Version .01** - Alpha
 
